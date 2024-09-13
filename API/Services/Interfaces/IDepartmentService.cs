@@ -1,12 +1,15 @@
 ﻿using API.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace API.Services.Interfaces
 {
     public interface IDepartmentService
     {
-        IEnumerable<Department> GetAll();
+        Task<IEnumerable<Department>> GetAllAsync();
 
-        Department GetByCodigo(string codigo);
+        Task<Department> GetByCodigoAsync(string codigo);
+
+        Task<bool> ExistsAsync(string codigo);
     }
 }

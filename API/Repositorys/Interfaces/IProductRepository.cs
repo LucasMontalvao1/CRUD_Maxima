@@ -1,21 +1,21 @@
 ﻿using API.Models;
-using API.Models.DTOs;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace API.Repositorys.Interfaces
 {
     public interface IProductRepository
     {
-        IEnumerable<Product> GetAll();
+        Task<IEnumerable<Product>> GetAllAsync();
 
-        Product GetById(int id);
+        Task<Product> GetByIdAsync(int id);
 
-        Product GetByCodigo(string codigo);
+        Task<Product> GetByCodigoAsync(string codigo);
 
-        void AddProduct(ProductAddDTO productDto);
+        Task<int> AddProductAsync(Product product);
 
-        void UpdateProduct(int id, ProductDTO productDto);
+        Task UpdateProductAsync(int id, Product product);
 
-        void IsDeleted(int id);
+        Task DeleteProductAsync(int id);
     }
 }

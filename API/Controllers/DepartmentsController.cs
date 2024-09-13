@@ -1,6 +1,8 @@
 ﻿using API.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace API.Controllers
 {
@@ -12,36 +14,50 @@ namespace API.Controllers
 
         public DepartmentsController(IDepartmentService departmentService)
         {
-            _departmentService = departmentService;
+            _departmentService = departmentService ?? throw new ArgumentNullException(nameof(departmentService));
         }
-
 
         [HttpGet]
-        public IActionResult GetAll()
-        {
-            var departments = _departmentService.GetAll();
-
-            if (departments == null || !departments.Any())
-                return NotFound("Nenhum departamento encontrado.");
-
-            return Ok(departments);
-        }
-
-
-        [HttpGet("codigo/{codigo}")]
-        public IActionResult GetByCodigo(string codigo)
+        public async Task<IActionResult> GetAll()
         {
             try
             {
-                var department = _departmentService.GetByCodigo(codigo);
+                var departments = await _departmentService.GetAllAsync();
+                if (departments == null || !departments.Any())
+                {
+                    return NotFound("Nenhum departamento encontrado.");
+                }
+
+                return Ok(departments);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception details
+                return StatusCode(500, "Erro ao recuperar departamentos.");
+            }
+        }
+
+        [HttpGet("codigo/{codigo}")]
+        public async Task<IActionResult> GetByCodigo(string codigo)
+        {
+            try
+            {
+                var department = await _departmentService.GetByCodigoAsync(codigo);
                 if (department == null)
+                {
                     return NotFound("Departamento não encontrado.");
+                }
 
                 return Ok(department);
             }
             catch (ArgumentException ex)
             {
-                return NotFound(ex.Message);
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception details
+                return StatusCode(500, "Erro ao recuperar departamento.");
             }
         }
     }

@@ -2,6 +2,7 @@
 using API.Models;
 using API.Repositorys.Interfaces;
 using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace API.Repositorys
 {
@@ -14,26 +15,26 @@ namespace API.Repositorys
             _mySqlConnectionDB = mySqlConnectionDB;
         }
 
-        public User ValidarUsuario(string username, string password)
+        public async Task<User> ValidarUsuarioAsync(string username, string password)
         {
             User uservalid = null;
 
             try
             {
-                using (MySqlConnection connection = _mySqlConnectionDB.CreateConnection())
+                using (var connection = _mySqlConnectionDB.CreateConnection())
                 {
                     string query = "SELECT id_usuario, Username, Name, Email FROM usuarios WHERE Username = @Username AND Password = @Password";
 
-                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    using (var command = new MySqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Username", username);
                         command.Parameters.AddWithValue("@Password", password);
 
-                        connection.Open();
+                        await connection.OpenAsync();
 
-                        using (MySqlDataReader reader = command.ExecuteReader())
+                        using (var reader = await command.ExecuteReaderAsync())
                         {
-                            if (reader.Read())
+                            if (await reader.ReadAsync())
                             {
                                 uservalid = new User
                                 {
@@ -52,7 +53,7 @@ namespace API.Repositorys
                 Console.WriteLine($"Ocorreu erro: {ex.Message}");
             }
 
-            return uservalid; 
+            return uservalid;
         }
     }
 }

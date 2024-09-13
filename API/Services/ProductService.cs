@@ -2,57 +2,163 @@
 using API.Models.DTOs;
 using API.Repositorys.Interfaces;
 using API.Services.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace API.Services
 {
     public class ProductService : IProductService
     {
         private readonly IProductRepository _productRepository;
+        private readonly IDepartmentRepository _departmentRepository;
 
-        public ProductService(IProductRepository productRepository)
+        public ProductService(IProductRepository productRepository, IDepartmentRepository departmentRepository)
         {
-            _productRepository = productRepository;
+            _productRepository = productRepository ?? throw new ArgumentNullException(nameof(productRepository));
+            _departmentRepository = departmentRepository ?? throw new ArgumentNullException(nameof(departmentRepository));
         }
 
-        public IEnumerable<Product> GetAll()
+        public async Task<IEnumerable<Product>> GetAllAsync()
         {
-            return _productRepository.GetAll();
+            try
+            {
+                var products = await _productRepository.GetAllAsync();
+                if (products == null)
+                {
+                    throw new ApplicationException("Nenhum produto encontrado.");
+                }
+                return products;
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (e.g., using a logging library)
+                throw new ApplicationException("Erro ao obter todos os produtos.", ex);
+            }
         }
 
-        public Product GetById(int id)
+        public async Task<Product> GetByIdAsync(int id)
         {
-            return _productRepository.GetById(id);
+            try
+            {
+                var product = await _productRepository.GetByIdAsync(id);
+                if (product == null)
+                {
+                    throw new KeyNotFoundException($"Produto com ID {id} não encontrado.");
+                }
+                return product;
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (e.g., using a logging library)
+                throw new ApplicationException($"Erro ao obter o produto com ID {id}.", ex);
+            }
         }
 
-        public Product GetByCodigo(string codigo)
+        public async Task<Product> GetByCodigoAsync(string codigo)
         {
-            return _productRepository.GetByCodigo(codigo);
+            try
+            {
+                var product = await _productRepository.GetByCodigoAsync(codigo);
+                if (product == null)
+                {
+                    throw new KeyNotFoundException($"Produto com código {codigo} não encontrado.");
+                }
+                return product;
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (e.g., using a logging library)
+                throw new ApplicationException($"Erro ao obter o produto com código {codigo}.", ex);
+            }
         }
 
-        public void AddProduct(ProductAddDTO productDto)
+        public async Task<int> AddProductAsync(ProductAddDTO productDto)
         {
             if (productDto == null)
-            {
-                throw new ArgumentNullException(nameof(productDto), "Produto não pode ser nulo.");
-            }
+                throw new ArgumentNullException(nameof(productDto));
 
-            _productRepository.AddProduct(productDto);
+            var product = new Product
+            {
+                Codigo = productDto.Codigo,
+                Descricao = productDto.Descricao,
+                Preco = productDto.Preco,
+                Status = productDto.Status,
+                CodigoDepartamento = productDto.CodigoDepartamento
+            };
+
+            if (product.Preco <= 0)
+                throw new ArgumentException("O preço deve ser maior que zero.", nameof(product.Preco));
+
+            try
+            {
+                var departmentExists = await _departmentRepository.ExistsAsync(product.CodigoDepartamento);
+                if (!departmentExists)
+                    throw new ArgumentException("O código do departamento não é válido.", nameof(product.CodigoDepartamento));
+
+                return await _productRepository.AddProductAsync(product);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Erro ao adicionar o produto.", ex);
+            }
         }
 
-        public void UpdateProduct(int id, ProductDTO productDto)
+        public async Task<int> UpdateProductAsync(int id, ProductDTO productDto)
         {
-            if (productDto == null)
-            {
-                throw new ArgumentNullException(nameof(productDto), "Produto não pode ser nulo.");
-            }
+            if (productDto == null || id != productDto.Id)
+                throw new ArgumentException("Dados de produto inválidos ou ID incorreto.", nameof(productDto));
 
-            _productRepository.UpdateProduct(id, productDto);
+            var product = new Product
+            {
+                Id = productDto.Id ?? throw new ArgumentNullException(nameof(productDto.Id), "O ID do produto não pode ser nulo."),
+                Codigo = productDto.Codigo,
+                Descricao = productDto.Descricao,
+                Preco = productDto.Preco,
+                Status = productDto.Status,
+                CodigoDepartamento = productDto.CodigoDepartamento
+            };
+
+            if (product.Preco <= 0)
+                throw new ArgumentException("O preço deve ser maior que zero.", nameof(product.Preco));
+
+            try
+            {
+                var departmentExists = await _departmentRepository.ExistsAsync(product.CodigoDepartamento);
+                if (!departmentExists)
+                    throw new ArgumentException("O código do departamento não é válido.", nameof(product.CodigoDepartamento));
+
+                var existingProduct = await _productRepository.GetByIdAsync(id);
+                if (existingProduct == null)
+                    throw new KeyNotFoundException($"Produto com ID {id} não encontrado.");
+
+                await _productRepository.UpdateProductAsync(id, product);
+                return id;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException($"Erro ao atualizar o produto com ID {id}.", ex);
+            }
         }
 
-        public void DeleteProduct(int id)
+
+
+        public async Task<(int Id, string Message)> DeleteProductAsync(int id)
         {
-            _productRepository.IsDeleted(id);
+            try
+            {
+                var existingProduct = await _productRepository.GetByIdAsync(id);
+                if (existingProduct == null)
+                    throw new KeyNotFoundException($"Produto com ID {id} não encontrado.");
+
+                await _productRepository.DeleteProductAsync(id);
+                return (id, $"Produto com ID {id} foi deletado com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (e.g., using a logging library)
+                throw new ApplicationException($"Erro ao deletar o produto com ID {id}.", ex);
+            }
         }
     }
 }

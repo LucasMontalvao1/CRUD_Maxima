@@ -1,9 +1,10 @@
 ﻿using API.Models;
+using System.Threading.Tasks;
 
 namespace API.Repositorys.Interfaces
 {
     public interface IAuthRepository
     {
-        User ValidarUsuario(string username, string password);
+        Task<User> ValidarUsuarioAsync(string username, string password);
     }
 }

@@ -3,7 +3,10 @@ using API.Models;
 using API.Models.DTOs;
 using API.Repositorys.Interfaces;
 using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Threading.Tasks;
 
 namespace API.Repositorys
 {
@@ -14,179 +17,245 @@ namespace API.Repositorys
 
         public ProductRepository(MySqlConnectionDB mySqlConnectionDB)
         {
-            _mySqlConnectionDB = mySqlConnectionDB;
+            _mySqlConnectionDB = mySqlConnectionDB ?? throw new ArgumentNullException(nameof(mySqlConnectionDB));
             _connection = _mySqlConnectionDB.CreateConnection();
             _connection.Open();
         }
 
-        public IEnumerable<Product> GetAll()
+        public async Task<IEnumerable<Product>> GetAllAsync()
         {
             var products = new List<Product>();
-            var query = "SELECT * FROM Product";
+            var query = @"SELECT p.Id,
+                                 p.Codigo,
+                                 p.Descricao,
+                                 p.Preco,
+                                 p.Status,
+                                 p.Deletado,
+                                 d.Codigo AS CodigoDepartamento,
+                                 d.Descricao AS DescricaoDepartamento
+                          FROM Product p
+                          INNER JOIN Department d ON p.CodigoDepartamento = d.Codigo
+                          WHERE p.Deletado = FALSE";
 
-            using (var command = new MySqlCommand(query, _connection))
-            using (var reader = command.ExecuteReader())
+            try
             {
-                while (reader.Read())
+                using (var command = new MySqlCommand(query, _connection))
+                using (var reader = await command.ExecuteReaderAsync())
                 {
-                    var product = new Product
+                    while (await reader.ReadAsync())
                     {
-                        Id = reader.GetInt32("Id"),
-                        Codigo = reader.GetString("Codigo"),
-                        Descricao = reader.GetString("Descricao"),
-                        Preco = reader.GetDecimal("Preco"),
-                        Status = reader.GetBoolean("Status"),
-                        CodigoDepartamento = reader.GetString("CodigoDepartamento"),
-                        Deletado = reader.GetBoolean("Deletado")
-                    };
+                        var product = new Product
+                        {
+                            Id = reader.GetInt32("Id"),
+                            Codigo = reader.GetString("Codigo"),
+                            Descricao = reader.GetString("Descricao"),
+                            Preco = reader.GetDecimal("Preco"),
+                            Status = reader.GetBoolean("Status"),
+                            Deletado = reader.GetBoolean("Deletado"),
 
-                    products.Add(product);
+                            Department = new Department
+                            {
+                                Codigo = reader.GetString("CodigoDepartamento"),
+                                Descricao = reader.GetString("DescricaoDepartamento")
+                            }
+                        };
+
+                        products.Add(product);
+                    }
                 }
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception("Erro ao obter produtos.", ex);
             }
 
             return products;
         }
 
-        public Product GetById(int id)
+        public async Task<Product> GetByIdAsync(int id)
         {
             Product product = null;
+            var query = @"SELECT p.Id,
+                                 p.Codigo,
+                                 p.Descricao,
+                                 p.Preco,
+                                 p.Status,
+                                 p.Deletado,
+                                 d.Codigo AS CodigoDepartamento,
+                                 d.Descricao AS DescricaoDepartamento
+                          FROM Product p
+                          INNER JOIN Department d ON p.CodigoDepartamento = d.Codigo
+                          WHERE p.Id = @Id AND p.Deletado = FALSE";
 
-            var query = "SELECT * FROM Product WHERE Id = @Id";
-
-            using (var command = new MySqlCommand(query, _connection))
+            try
             {
-                command.Parameters.AddWithValue("@Id", id);
-                using (var reader = command.ExecuteReader())
+                using (var command = new MySqlCommand(query, _connection))
                 {
-                    if (reader.Read())
+                    command.Parameters.AddWithValue("@Id", id);
+
+                    using (var reader = await command.ExecuteReaderAsync())
                     {
-                        product = new Product
+                        if (await reader.ReadAsync())
                         {
-                            Id = reader.GetInt32("Id"),
-                            Codigo = reader.GetString("Codigo"),
-                            Descricao = reader.GetString("Descricao"),
-                            Preco = reader.GetDecimal("Preco"),
-                            Status = reader.GetBoolean("Status"),
-                            CodigoDepartamento = reader.GetString("CodigoDepartamento"),
-                            Deletado = reader.GetBoolean("Deletado")
-                        };
+                            product = new Product
+                            {
+                                Id = reader.GetInt32("Id"),
+                                Codigo = reader.GetString("Codigo"),
+                                Descricao = reader.GetString("Descricao"),
+                                Preco = reader.GetDecimal("Preco"),
+                                Status = reader.GetBoolean("Status"),
+                                Deletado = reader.GetBoolean("Deletado"),
+
+                                Department = new Department
+                                {
+                                    Codigo = reader.GetString("CodigoDepartamento"),
+                                    Descricao = reader.GetString("DescricaoDepartamento")
+                                }
+                            };
+                        }
                     }
                 }
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception("Erro ao obter produto por ID.", ex);
             }
 
             return product;
         }
 
-        public Product GetByCodigo(string codigo)
+        public async Task<Product> GetByCodigoAsync(string codigo)
         {
             Product product = null;
+            var query = @"SELECT p.Id,
+                                 p.Codigo,
+                                 p.Descricao,
+                                 p.Preco,
+                                 p.Status,
+                                 p.Deletado,
+                                 d.Codigo AS CodigoDepartamento,
+                                 d.Descricao AS DescricaoDepartamento
+                          FROM Product p
+                          INNER JOIN Department d ON p.CodigoDepartamento = d.Codigo
+                          WHERE p.Codigo = @Codigo AND p.Deletado = FALSE";
 
-            var query = "SELECT * FROM Product WHERE Codigo = @Codigo";
-
-            using (var command = new MySqlCommand(query, _connection))
+            try
             {
-                command.Parameters.AddWithValue("@Codigo", codigo);
-                using (var reader = command.ExecuteReader())
+                using (var command = new MySqlCommand(query, _connection))
                 {
-                    if (reader.Read())
+                    command.Parameters.AddWithValue("@Codigo", codigo);
+
+                    using (var reader = await command.ExecuteReaderAsync())
                     {
-                        product = new Product
+                        if (await reader.ReadAsync())
                         {
-                            Id = reader.GetInt32("Id"),
-                            Codigo = reader.GetString("Codigo"),
-                            Descricao = reader.GetString("Descricao"),
-                            Preco = reader.GetDecimal("Preco"),
-                            Status = reader.GetBoolean("Status"),
-                            CodigoDepartamento = reader.GetString("CodigoDepartamento"),
-                            Deletado = reader.GetBoolean("Deletado")
-                        };
+                            product = new Product
+                            {
+                                Id = reader.GetInt32("Id"),
+                                Codigo = reader.GetString("Codigo"),
+                                Descricao = reader.GetString("Descricao"),
+                                Preco = reader.GetDecimal("Preco"),
+                                Status = reader.GetBoolean("Status"),
+                                Deletado = reader.GetBoolean("Deletado"),
+
+                                Department = new Department
+                                {
+                                    Codigo = reader.GetString("CodigoDepartamento"),
+                                    Descricao = reader.GetString("DescricaoDepartamento")
+                                }
+                            };
+                        }
                     }
                 }
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception("Erro ao obter produto por código.", ex);
             }
 
             return product;
         }
 
-        public void AddProduct(ProductAddDTO productDto)
+        public async Task<int> AddProductAsync(Product product)
         {
-            if (productDto == null)
+            if (product == null)
             {
-                throw new ArgumentNullException(nameof(productDto), "Produto não pode ser nulo.");
+                throw new ArgumentNullException(nameof(product), "Produto não pode ser nulo.");
             }
 
-            // Conversão de ProductAddDTO para Product
-            var product = new Product
+            var query = @"INSERT INTO Product (Codigo, Descricao, Preco, Status, CodigoDepartamento, Deletado)
+                      VALUES (@Codigo, @Descricao, @Preco, @Status, @CodigoDepartamento, FALSE)";
+
+            try
             {
-                Codigo = productDto.Codigo,
-                Descricao = productDto.Descricao,
-                Preco = productDto.Preco,
-                Status = productDto.Status,
-                CodigoDepartamento = productDto.CodigoDepartamento
-            };
+                using (var command = new MySqlCommand(query, _connection))
+                {
+                    command.Parameters.AddWithValue("@Codigo", product.Codigo);
+                    command.Parameters.AddWithValue("@Descricao", product.Descricao);
+                    command.Parameters.AddWithValue("@Preco", product.Preco);
+                    command.Parameters.AddWithValue("@Status", product.Status);
+                    command.Parameters.AddWithValue("@CodigoDepartamento", product.CodigoDepartamento);
 
-            string query = @"
-        INSERT INTO Product (Codigo, Descricao, DepartamentoCodigo, Preco, Status)
-        VALUES (@Codigo, @Descricao, @DepartamentoCodigo, @Preco, @Status)";
-
-            using (var command = new MySqlCommand(query, _connection))
+                    return await command.ExecuteNonQueryAsync();
+                }
+            }
+            catch (MySqlException ex)
             {
-                command.Parameters.AddWithValue("@Codigo", product.Codigo);
-                command.Parameters.AddWithValue("@Descricao", product.Descricao);
-                command.Parameters.AddWithValue("@DepartamentoCodigo", product.CodigoDepartamento);
-                command.Parameters.AddWithValue("@Preco", product.Preco);
-                command.Parameters.AddWithValue("@Status", product.Status);
-
-                command.ExecuteNonQuery();
+                throw new Exception("Erro ao adicionar produto.", ex);
             }
         }
 
-        public void UpdateProduct(int id, ProductDTO productDto)
+        public async Task UpdateProductAsync(int id, Product product)
         {
-            if (productDto == null)
+            if (product == null)
             {
-                throw new ArgumentNullException(nameof(productDto), "Produto não pode ser nulo.");
+                throw new ArgumentNullException(nameof(product), "Produto não pode ser nulo.");
             }
 
-            // Conversão de ProductDTO para Product
-            var product = new Product
+            var query = @"UPDATE Product 
+                      SET Codigo = @Codigo, 
+                          Descricao = @Descricao, 
+                          Preco = @Preco, 
+                          Status = @Status, 
+                          CodigoDepartamento = @CodigoDepartamento
+                      WHERE Id = @Id AND Deletado = FALSE";
+
+            try
             {
-                Id = id,
-                Codigo = productDto.Codigo,
-                Descricao = productDto.Descricao,
-                Preco = productDto.Preco,
-                Status = productDto.Status,
-                CodigoDepartamento = productDto.CodigoDepartamento
-            };
+                using (var command = new MySqlCommand(query, _connection))
+                {
+                    command.Parameters.AddWithValue("@Id", id);
+                    command.Parameters.AddWithValue("@Codigo", product.Codigo);
+                    command.Parameters.AddWithValue("@Descricao", product.Descricao);
+                    command.Parameters.AddWithValue("@Preco", product.Preco);
+                    command.Parameters.AddWithValue("@Status", product.Status);
+                    command.Parameters.AddWithValue("@CodigoDepartamento", product.CodigoDepartamento);
 
-            string query = @"
-        UPDATE Product
-        SET Codigo = @Codigo, Descricao = @Descricao, DepartamentoCodigo = @DepartamentoCodigo, Preco = @Preco, Status = @Status
-        WHERE Id = @Id";
-
-            using (var command = new MySqlCommand(query, _connection))
+                    await command.ExecuteNonQueryAsync();
+                }
+            }
+            catch (MySqlException ex)
             {
-                command.Parameters.AddWithValue("@Id", product.Id);
-                command.Parameters.AddWithValue("@Codigo", product.Codigo);
-                command.Parameters.AddWithValue("@Descricao", product.Descricao);
-                command.Parameters.AddWithValue("@DepartamentoCodigo", product.CodigoDepartamento);
-                command.Parameters.AddWithValue("@Preco", product.Preco);
-                command.Parameters.AddWithValue("@Status", product.Status);
-
-                command.ExecuteNonQuery();
+                throw new Exception("Erro ao atualizar produto.", ex);
             }
         }
 
-        public void IsDeleted(int id)
+        public async Task DeleteProductAsync(int id)
         {
-            string query = @"
-            UPDATE Product
-            SET Deletado = true
-            WHERE Id = @Id";
+            var query = @"UPDATE Product SET Deletado = TRUE WHERE Id = @Id";
 
-            using (var command = new MySqlCommand(query, _connection))
+            try
             {
-                command.Parameters.AddWithValue("@Id", id);
-                command.ExecuteNonQuery();
+                using (var command = new MySqlCommand(query, _connection))
+                {
+                    command.Parameters.AddWithValue("@Id", id);
+
+                    await command.ExecuteNonQueryAsync();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception("Erro ao deletar produto.", ex);
             }
         }
 
@@ -196,6 +265,7 @@ namespace API.Repositorys
             {
                 _connection.Close();
                 _connection.Dispose();
+                _connection = null;
             }
         }
     }

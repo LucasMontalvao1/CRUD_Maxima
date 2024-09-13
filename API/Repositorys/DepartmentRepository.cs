@@ -2,7 +2,10 @@
 using API.Models;
 using API.Repositorys.Interfaces;
 using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Threading.Tasks;
 
 namespace API.Repositorys
 {
@@ -15,67 +18,94 @@ namespace API.Repositorys
         {
             _mySqlConnectionDB = mySqlConnectionDB;
             _connection = _mySqlConnectionDB.CreateConnection();
-            _connection.Open();
+            _connection.Open(); // Abre a conexão quando o repositório é instanciado
         }
 
-        public IEnumerable<Department> GetAll()
+        public async Task<IEnumerable<Department>> GetAllAsync()
         {
             var departments = new List<Department>();
-            var query = "SELECT * FROM department";
+            var query = "SELECT * FROM Department";
 
-            using (var command = new MySqlCommand(query, _connection))
-            using (var reader = command.ExecuteReader())
+            try
             {
-                while (reader.Read())
+                using (var command = new MySqlCommand(query, (MySqlConnection)_connection))
+                using (var reader = await command.ExecuteReaderAsync())
                 {
-                    var department = new Department
+                    while (await reader.ReadAsync())
                     {
-                        Codigo = reader.GetString("Codigo"),
-                        Descricao = reader.GetString("Descricao")
-                    };
+                        var department = new Department
+                        {
+                            Codigo = reader.GetString("Codigo"),
+                            Descricao = reader.GetString("Descricao")
+                        };
 
-                    departments.Add(department);
+                        departments.Add(department);
+                    }
                 }
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception("Erro ao obter todos os departamentos.", ex);
             }
 
             return departments;
         }
 
-        public Department GetByCodigo(string codigo)
+        public async Task<Department> GetByCodigoAsync(string codigo)
         {
             Department department = null;
+            var query = "SELECT * FROM Department WHERE Codigo = @Codigo";
 
-            var query = @"
-                SELECT *
-                FROM Department
-                WHERE Codigo = @Codigo";
-
-            using (var command = new MySqlCommand(query, _connection))
+            try
             {
-                command.Parameters.AddWithValue("@Codigo", codigo);
-                using (var reader = command.ExecuteReader())
+                using (var command = new MySqlCommand(query, (MySqlConnection)_connection))
                 {
-                    if (reader.Read())
+                    command.Parameters.AddWithValue("@Codigo", codigo);
+
+                    using (var reader = await command.ExecuteReaderAsync())
                     {
-                        department = new Department
+                        if (await reader.ReadAsync())
                         {
-                            Codigo = reader.GetString("Codigo"),
-                            Descricao = reader.GetString("Descricao")
-                        };
+                            department = new Department
+                            {
+                                Codigo = reader.GetString("Codigo"),
+                                Descricao = reader.GetString("Descricao")
+                            };
+                        }
                     }
                 }
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception("Erro ao obter departamento por código.", ex);
             }
 
             return department;
         }
 
+        public async Task<bool> ExistsAsync(string codigo)
+        {
+            var query = "SELECT COUNT(1) FROM Department WHERE Codigo = @Codigo";
+
+            try
+            {
+                using (var command = new MySqlCommand(query, (MySqlConnection)_connection))
+                {
+                    command.Parameters.AddWithValue("@Codigo", codigo);
+                    var count = Convert.ToInt32(await command.ExecuteScalarAsync());
+                    return count > 0;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception("Erro ao verificar existência do departamento.", ex);
+            }
+        }
+
         public void Dispose()
         {
-            if (_connection != null)
-            {
-                _connection.Close();
-                _connection.Dispose();
-            }
+            _connection?.Close();
+            _connection?.Dispose();
         }
     }
 }

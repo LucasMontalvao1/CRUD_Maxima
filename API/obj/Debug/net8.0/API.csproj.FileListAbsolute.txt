@@ -48,3 +48,13 @@ C:\dev\CRUD_Maxima\API\bin\Debug\net8.0\runtimes\win-x64\native\k5sprt64.dll
 C:\dev\CRUD_Maxima\API\bin\Debug\net8.0\runtimes\win-x64\native\krb5_64.dll
 C:\dev\CRUD_Maxima\API\bin\Debug\net8.0\runtimes\win-x64\native\krbcc64.dll
 C:\dev\CRUD_Maxima\API\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Windows.Extensions.dll
+C:\dev\CRUD_Maxima\API\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+C:\dev\CRUD_Maxima\API\bin\Debug\net8.0\Serilog.dll
+C:\dev\CRUD_Maxima\API\bin\Debug\net8.0\Serilog.AspNetCore.dll
+C:\dev\CRUD_Maxima\API\bin\Debug\net8.0\Serilog.Extensions.Hosting.dll
+C:\dev\CRUD_Maxima\API\bin\Debug\net8.0\Serilog.Extensions.Logging.dll
+C:\dev\CRUD_Maxima\API\bin\Debug\net8.0\Serilog.Formatting.Compact.dll
+C:\dev\CRUD_Maxima\API\bin\Debug\net8.0\Serilog.Settings.Configuration.dll
+C:\dev\CRUD_Maxima\API\bin\Debug\net8.0\Serilog.Sinks.Console.dll
+C:\dev\CRUD_Maxima\API\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
+C:\dev\CRUD_Maxima\API\bin\Debug\net8.0\Serilog.Sinks.File.dll

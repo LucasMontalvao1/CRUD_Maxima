@@ -1,6 +1,7 @@
 ﻿using API.Models.DTO;
 using API.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace API.Controllers
 {
@@ -12,27 +13,45 @@ namespace API.Controllers
 
         public AuthController(IAuthService authService)
         {
-            _authService = authService;
+            _authService = authService ?? throw new ArgumentNullException(nameof(authService));
         }
 
         [HttpPost("login")]
-        public IActionResult Login([FromBody] UserDto userDto)
+        public async Task<IActionResult> Login([FromBody] UserDto userDto)
         {
-            var usuario = _authService.ValidarUsuario(userDto.Username, userDto.Password);
-            if (usuario != null)
+            if (userDto == null)
             {
-                return Ok(new
-                {
-                    User = new
-                    {
-                        usuario.id_usuario,
-                        usuario.Username,
-                        usuario.Name,
-                        usuario.Email
-                    }
-                });
+                return BadRequest("Dados de login não podem ser nulos.");
             }
-            return Unauthorized("Login ou senha incorretos");
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var usuario = await _authService.ValidarUsuarioAsync(userDto.Username, userDto.Password);
+                if (usuario != null)
+                {
+                    return Ok(new
+                    {
+                        User = new
+                        {
+                            usuario.id_usuario,
+                            usuario.Username,
+                            usuario.Name,
+                            usuario.Email
+                        }
+                    });
+                }
+                return Unauthorized("Login ou senha incorretos");
+            }
+            catch (Exception ex)
+            {
+                // Log the exception details
+                return StatusCode(500, "Erro ao processar a solicitação de login.");
+            }
         }
     }
 }

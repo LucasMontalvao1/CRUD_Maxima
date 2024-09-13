@@ -1,21 +1,22 @@
 ﻿using API.Models;
 using API.Models.DTOs;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace API.Services.Interfaces
 {
     public interface IProductService
     {
-        IEnumerable<Product> GetAll();
+        Task<IEnumerable<Product>> GetAllAsync();
 
-        Product GetById(int id);
+        Task<Product> GetByIdAsync(int id);
 
-        Product GetByCodigo(string codigo);
+        Task<Product> GetByCodigoAsync(string codigo);
 
-        void AddProduct(ProductAddDTO productDto);
+        Task<int> AddProductAsync(ProductAddDTO productDto);
 
-        void UpdateProduct(int id, ProductDTO productDto);
+        Task<int> UpdateProductAsync(int id, ProductDTO productDto);
 
-        void DeleteProduct(int id);
+        Task<(int Id, string Message)> DeleteProductAsync(int id);
     }
 }
