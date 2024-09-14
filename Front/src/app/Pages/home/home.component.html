@@ -1,0 +1,8 @@
+<h2>Bem-vindo, {{ user?.username }}</h2>
+
+<div *ngIf="user">
+  <p>Nome: {{ user.name }}</p>
+  <p>Email: {{ user.email }}</p>
+</div>
+
+<button mat-raised-button color="primary" (click)="logout()">Logout</button>

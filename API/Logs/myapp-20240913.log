@@ -1,0 +1,24 @@
+2024-09-13 00:05:56.244 -03:00 [INF] Now listening on: https://localhost:7263
+2024-09-13 00:05:56.302 -03:00 [INF] Now listening on: http://localhost:5147
+2024-09-13 00:05:56.365 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-13 00:05:56.368 -03:00 [INF] Hosting environment: Development
+2024-09-13 00:05:56.369 -03:00 [INF] Content root path: C:\dev\CRUD_Maxima\API
+2024-09-13 00:05:58.607 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/swagger/index.html - null null
+2024-09-13 00:05:59.401 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/swagger/index.html - 200 null text/html;charset=utf-8 805.9843ms
+2024-09-13 00:05:59.439 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/_framework/aspnetcore-browser-refresh.js - null null
+2024-09-13 00:05:59.555 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/_framework/aspnetcore-browser-refresh.js - 200 13742 application/javascript; charset=utf-8 116.4915ms
+2024-09-13 00:05:59.567 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/_vs/browserLink - null null
+2024-09-13 00:05:59.735 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/_vs/browserLink - 200 null text/javascript; charset=UTF-8 167.8458ms
+2024-09-13 00:06:00.224 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/swagger/v1/swagger.json - null null
+2024-09-13 00:06:00.569 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 345.1603ms
+2024-09-13 00:06:12.784 -03:00 [INF] Request starting HTTP/2 POST https://localhost:7263/api/Products - application/json 115
+2024-09-13 00:06:12.802 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.Post (API)'
+2024-09-13 00:06:12.847 -03:00 [INF] Route matched with {action = "Post", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Post(API.Models.DTOs.ProductAddDTO) on controller API.Controllers.ProductsController (API).
+2024-09-13 00:06:13.560 -03:00 [INF] Executing CreatedAtActionResult, writing value of type 'API.Models.DTOs.ProductAddDTO'.
+2024-09-13 00:06:13.601 -03:00 [INF] Executed action API.Controllers.ProductsController.Post (API) in 746.1841ms
+2024-09-13 00:06:13.603 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.Post (API)'
+2024-09-13 00:06:13.609 -03:00 [INF] Request finished HTTP/2 POST https://localhost:7263/api/Products - 201 null application/json; charset=utf-8 825.0144ms
+2024-09-13 21:02:39.873 -03:00 [INF] Now listening on: http://localhost:5147
+2024-09-13 21:02:39.919 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-13 21:02:39.921 -03:00 [INF] Hosting environment: Development
+2024-09-13 21:02:39.922 -03:00 [INF] Content root path: C:\dev\CRUD_Maxima\API
