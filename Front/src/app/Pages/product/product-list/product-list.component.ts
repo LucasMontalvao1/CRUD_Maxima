@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
 import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../models/product.model';
 import { MatTableDataSource } from '@angular/material/table';
+import { ProductDialogComponent } from '../product-dialog/product-dialog.component';
 
 @Component({
   selector: 'app-product-list',
@@ -18,7 +20,10 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   @ViewChild(MatSort) sort: MatSort | undefined;
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService,
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
     this.loadProducts();
@@ -27,8 +32,8 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     if (this.paginator) {
       this.dataSource.paginator = this.paginator;
-      this.paginator.pageSize = 5; // Defina o tamanho da página
-      this.paginator.pageIndex = 1;  // Defina o índice inicial da página
+      this.paginator.pageSize = 5;
+      this.paginator.pageIndex = 0;
     }
 
     if (this.sort) {
@@ -38,16 +43,28 @@ export class ProductListComponent implements OnInit, AfterViewInit {
 
   loadProducts(): void {
     this.productService.getProducts().subscribe((data: Product[]) => {
-      console.log('Loaded products:', data);
       this.products = data;
-      this.dataSource.data = this.products; // Atualize a fonte de dados
-      console.log('DataSource data:', this.dataSource.data); // Verifique os dados no dataSource
+      this.dataSource.data = this.products;
+    });
+  }
+
+  openProductDialog(product?: Product): void {
+    const dialogRef = this.dialog.open(ProductDialogComponent, {
+      width: '700px',
+      data: { product, reloadProducts: () => this.loadProducts() }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result?.success) {
+        this.loadProducts(); // Recarrega a lista de produtos após criação/edição
+      }
     });
   }
 
   deleteProduct(productId: number): void {
     this.productService.deleteProduct(productId).subscribe(() => {
-      this.loadProducts(); // Recarrega os produtos após exclusão
+      this.loadProducts();
     });
   }
+
 }

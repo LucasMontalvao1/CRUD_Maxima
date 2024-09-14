@@ -17,6 +17,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
 
 // Components
 import { AppComponent } from './app.component';
@@ -28,9 +31,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DepartamentListComponent } from './pages/department/departament-list/departament-list.component';
 import { ProductListComponent } from './pages/product/product-list/product-list.component';
-import { ProductCreateComponent } from './pages/product/product-create/product-create.component';
-import { ProductEditComponent } from './pages/product/product-edit/product-edit.component';
-import { ProductDeleteComponent } from './pages/product/product-delete/product-delete.component';
+import { ProductDialogComponent } from './pages/product/product-dialog/product-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -41,9 +43,8 @@ import { ProductDeleteComponent } from './pages/product/product-delete/product-d
     HomeComponent,
     DepartamentListComponent,
     ProductListComponent,
-    ProductCreateComponent,
-    ProductEditComponent,
-    ProductDeleteComponent
+    ProductDialogComponent
+
   ],
   imports: [
     BrowserModule,
@@ -62,7 +63,10 @@ import { ProductDeleteComponent } from './pages/product/product-delete/product-d
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
+    MatCheckboxModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
