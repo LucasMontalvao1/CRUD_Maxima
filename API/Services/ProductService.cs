@@ -15,8 +15,8 @@ namespace API.Services
 
         public ProductService(IProductRepository productRepository, IDepartmentRepository departmentRepository)
         {
-            _productRepository = productRepository ?? throw new ArgumentNullException(nameof(productRepository));
-            _departmentRepository = departmentRepository ?? throw new ArgumentNullException(nameof(departmentRepository));
+            _productRepository = productRepository;
+            _departmentRepository = departmentRepository;
         }
 
         public async Task<IEnumerable<Product>> GetAllAsync()
@@ -32,7 +32,6 @@ namespace API.Services
             }
             catch (Exception ex)
             {
-                // Log the exception (e.g., using a logging library)
                 throw new ApplicationException("Erro ao obter todos os produtos.", ex);
             }
         }
@@ -50,7 +49,6 @@ namespace API.Services
             }
             catch (Exception ex)
             {
-                // Log the exception (e.g., using a logging library)
                 throw new ApplicationException($"Erro ao obter o produto com ID {id}.", ex);
             }
         }
@@ -68,7 +66,6 @@ namespace API.Services
             }
             catch (Exception ex)
             {
-                // Log the exception (e.g., using a logging library)
                 throw new ApplicationException($"Erro ao obter o produto com código {codigo}.", ex);
             }
         }
@@ -156,7 +153,6 @@ namespace API.Services
             }
             catch (Exception ex)
             {
-                // Log the exception (e.g., using a logging library)
                 throw new ApplicationException($"Erro ao deletar o produto com ID {id}.", ex);
             }
         }

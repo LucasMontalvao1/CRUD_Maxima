@@ -14,7 +14,7 @@ namespace API.Controllers
 
         public DepartmentsController(IDepartmentService departmentService)
         {
-            _departmentService = departmentService ?? throw new ArgumentNullException(nameof(departmentService));
+            _departmentService = departmentService;
         }
 
         [HttpGet]
@@ -32,7 +32,6 @@ namespace API.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception details
                 return StatusCode(500, "Erro ao recuperar departamentos.");
             }
         }
@@ -56,7 +55,6 @@ namespace API.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception details
                 return StatusCode(500, "Erro ao recuperar departamento.");
             }
         }

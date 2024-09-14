@@ -1,26 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environments';
-import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
+import { User } from '../models/auth.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = environment.loginEndpoint; // URL da API para login
+  private apiUrl = `${environment.loginEndpoint}`;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient) { }
 
-  // Método para realizar o login
-  login(username: string, password: string): Observable<any> {
-    const body = { username, password };
-    return this.http.post<any>(`${this.apiUrl}`, body, { responseType: 'text' as 'json' });
+  login(username: string, password: string): Observable<User> {
+    return this.http.post<User>(this.apiUrl, { username, password });
   }
 
-  // Método para realizar o logout
-  logout(): void {
-    sessionStorage.removeItem('user'); // Remove os dados do usuário
-    this.router.navigate(['/login']);  // Redireciona para a página de login
+  setSession(user: User): void {
+    sessionStorage.setItem('user', JSON.stringify(user));
+  }
+
+  getSession(): User | null {
+    return JSON.parse(sessionStorage.getItem('user') || 'null');
+  }
+
+  clearSession(): void {
+    sessionStorage.removeItem('user');
   }
 }

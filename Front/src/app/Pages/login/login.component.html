@@ -1,22 +1,30 @@
-<h2>Login</h2>
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <mat-form-field appearance="fill">
-    <mat-label>Username</mat-label>
-    <input matInput formControlName="username" />
-    <mat-error *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
-      Username is required
-    </mat-error>
-  </mat-form-field>
+<div class="container">
+  <header class="header">
+    <h1 class="titulo">Bem-vindo ao Sistema de Controle Financeiro</h1>
+  </header>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Password</mat-label>
-    <input matInput type="password" formControlName="password" />
-    <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-      Password is required
-    </mat-error>
-  </mat-form-field>
+  <div class="main-content">
+    <form class="login-form form-login" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <h2 class="login-header">
+        <img src="https://maximatech.com.br/wp-content/uploads/2019/04/logo-maximatech-e1554815418600.png" alt="Logo">
+      </h2>
 
-  <button mat-raised-button color="primary" type="submit">Login</button>
+      <div class="form-group">
+        <label for="username">Usuário:</label>
+        <input type="text" id="username" formControlName="username">
+      </div>
 
-  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
-</form>
+      <div class="form-group">
+        <label for="password">Senha:</label>
+        <input type="password" id="password" formControlName="password">
+      </div>
+
+      <button type="submit">Entrar</button>
+      <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+    </form>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2024 Lucas Montalvão. Todos os direitos reservados.</p>
+  </footer>
+</div>

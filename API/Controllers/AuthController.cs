@@ -13,7 +13,7 @@ namespace API.Controllers
 
         public AuthController(IAuthService authService)
         {
-            _authService = authService ?? throw new ArgumentNullException(nameof(authService));
+            _authService = authService;
         }
 
         [HttpPost("login")]
@@ -49,7 +49,6 @@ namespace API.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception details
                 return StatusCode(500, "Erro ao processar a solicitação de login.");
             }
         }

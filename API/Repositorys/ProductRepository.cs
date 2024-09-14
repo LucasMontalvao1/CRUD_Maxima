@@ -3,10 +3,7 @@ using API.Models;
 using API.Models.DTOs;
 using API.Repositorys.Interfaces;
 using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Threading.Tasks;
 
 namespace API.Repositorys
 {

@@ -18,7 +18,7 @@ namespace API.Repositorys
         {
             _mySqlConnectionDB = mySqlConnectionDB;
             _connection = _mySqlConnectionDB.CreateConnection();
-            _connection.Open(); // Abre a conexão quando o repositório é instanciado
+            _connection.Open(); 
         }
 
         public async Task<IEnumerable<Department>> GetAllAsync()

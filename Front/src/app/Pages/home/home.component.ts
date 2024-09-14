@@ -1,25 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-  user: any;
+  userName: string = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    const userData = sessionStorage.getItem('user');
-    if (userData) {
-      this.user = JSON.parse(userData); // Carrega os dados do usuário do sessionStorage
-    }
+    const user = this.authService.getSession();
+    this.userName = user ? user.name : 'Nome nao carregou';
   }
 
   logout(): void {
-    this.authService.logout(); // Chama o método de logout
+    this.authService.clearSession();
   }
 }

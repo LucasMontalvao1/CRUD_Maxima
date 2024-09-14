@@ -2,8 +2,8 @@
 {
     public class Department
     {
-        public string Codigo { get; set; }       // Código do departamento
+        public string Codigo { get; set; }      
 
-        public string Descricao { get; set; }    // Descrição do departamento
+        public string Descricao { get; set; }  
     }
 }

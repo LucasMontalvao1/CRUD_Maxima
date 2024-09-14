@@ -1,7 +1,5 @@
 ﻿using API.Models;
 using API.Models.DTOs;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace API.Services.Interfaces
 {

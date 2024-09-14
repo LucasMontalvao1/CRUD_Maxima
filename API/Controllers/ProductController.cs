@@ -17,8 +17,8 @@ namespace API.Controllers
 
         public ProductsController(IProductService productService, ILogger<ProductsController> logger)
         {
-            _productService = productService ?? throw new ArgumentNullException(nameof(productService));
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _productService = productService;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -138,7 +138,7 @@ namespace API.Controllers
             try
             {
                 var result = await _productService.DeleteProductAsync(id);
-                return Ok(result.Message);  // Retorna a mensagem de sucesso
+                return Ok(result.Message);  
             }
             catch (Exception ex)
             {

@@ -14,7 +14,7 @@ namespace API.Services
 
         public DepartmentService(IDepartmentRepository departmentRepository)
         {
-            _departmentRepository = departmentRepository ?? throw new ArgumentNullException(nameof(departmentRepository));
+            _departmentRepository = departmentRepository;
         }
 
         public async Task<IEnumerable<Department>> GetAllAsync()
@@ -25,7 +25,6 @@ namespace API.Services
             }
             catch (Exception ex)
             {
-                // Log the exception (e.g., using a logging library)
                 throw new ApplicationException("Erro ao obter todos os departamentos.", ex);
             }
         }
@@ -46,7 +45,6 @@ namespace API.Services
             }
             catch (Exception ex)
             {
-                // Log the exception (e.g., using a logging library)
                 throw new ApplicationException($"Erro ao obter o departamento com código {codigo}.", ex);
             }
         }
@@ -62,7 +60,6 @@ namespace API.Services
             }
             catch (Exception ex)
             {
-                // Log the exception (e.g., using a logging library)
                 throw new ApplicationException($"Erro ao verificar a existência do departamento com código {codigo}.", ex);
             }
         }

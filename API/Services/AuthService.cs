@@ -12,7 +12,7 @@ namespace API.Services
 
         public AuthService(IAuthRepository authRepository)
         {
-            _authRepository = authRepository ?? throw new ArgumentNullException(nameof(authRepository));
+            _authRepository = authRepository;
         }
 
         public async Task<User> ValidarUsuarioAsync(string username, string password)
@@ -29,7 +29,6 @@ namespace API.Services
             }
             catch (Exception ex)
             {
-                // Log the exception (e.g., using a logging library)
                 throw new ApplicationException("Erro ao validar o usuário.", ex);
             }
         }
