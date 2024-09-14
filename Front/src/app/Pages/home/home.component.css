@@ -1,0 +1,6 @@
+/* styles.css ou home.component.css */
+.welcome-message {
+  margin-top: 10px;
+  font-size: 1.5rem;
+  color: black; /* Cor visível para garantir que o texto não esteja escondido */
+}

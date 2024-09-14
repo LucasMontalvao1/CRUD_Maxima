@@ -1,1 +1,60 @@
-<p>product-list works!</p>
+<mat-card class="product-container">
+  <mat-card-header>
+    <div class="mat-card-header-title">Produtos</div>
+    <button mat-raised-button color="primary" class="create-product-button">Criar Produto</button>
+  </mat-card-header>
+
+  <mat-table [dataSource]="dataSource" matSort>
+
+    <!-- Definição das Colunas -->
+    <ng-container matColumnDef="codigo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Código</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.codigo}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="descricao">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Descrição</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.descricao}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="preco">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Preço</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.preco | currency}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.status ? 'Ativo' : 'Inativo'}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="department">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Departamento</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.department?.descricao}}</mat-cell>
+    </ng-container>
+
+    <!-- Ação dos Botões -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="action-buttons">
+        <!-- Botão Editar -->
+        <button mat-icon-button class="edit-button" aria-label="Editar">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <!-- Botão Excluir -->
+        <button mat-icon-button class="delete-button" (click)="deleteProduct(element.id)" aria-label="Excluir">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+  <div class="no-products" *ngIf="!dataSource.data.length">
+    Nenhum produto encontrado
+  </div>
+</mat-card>

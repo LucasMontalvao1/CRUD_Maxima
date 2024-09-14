@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Product } from '../models/product.model';
@@ -44,13 +44,7 @@ export class ProductService {
   }
 
   private handleError(error: any): Observable<never> {
-    let errorMessage = 'Erro desconhecido!';
-    if (error.error instanceof ErrorEvent) {
-      errorMessage = `Erro: ${error.error.message}`;
-    } else {
-      errorMessage = `Código do erro: ${error.status}\nMensagem: ${error.message}`;
-    }
-    alert(errorMessage);
-    return throwError(errorMessage);
+    console.error('Ocorreu um erro:', error);
+    return throwError(() => new Error('Erro ao acessar o serviço.'));
   }
 }

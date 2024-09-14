@@ -1,4 +1,5 @@
-﻿using API.Models.DTOs;
+﻿using API.Models;
+using API.Models.DTOs;
 using API.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -31,7 +32,7 @@ namespace API.Controllers
                 if (products == null || !products.Any())
                 {
                     _logger.LogInformation("Nenhum produto encontrado.");
-                    return NotFound("Nenhum produto encontrado.");
+                    return Ok(products);
                 }
 
                 return Ok(products);
