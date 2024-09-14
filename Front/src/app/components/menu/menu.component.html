@@ -1,0 +1,13 @@
+<mat-toolbar color="primary" class="mat-toolbar">
+  <span class="navbar-title">
+    <a routerLink="/home" class="navbar-link">MAXIMA</a>
+  </span>
+  <span class="menu-buttons">
+    <button mat-button [routerLink]="['/home']" routerLinkActive="active">Produtos</button>
+    <button mat-button [routerLink]="['/departments']" routerLinkActive="active">Departamentos</button>
+  </span>
+  <span class="spacer"></span>
+  <ng-container *ngIf="authService.isAuthenticated()">
+    <button mat-raised-button class="logout-button" (click)="logout()">Sair</button>
+  </ng-container>
+</mat-toolbar>

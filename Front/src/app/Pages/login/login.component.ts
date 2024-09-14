@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -9,14 +10,14 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
   loginForm: FormGroup;
-  errorMessage: string = '';
+  isLoading: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private snackBar: MatSnackBar
   ) {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -27,25 +28,29 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
+      this.isLoading = true;
 
       this.authService.login(username, password).subscribe(
-        (response) => {
-          console.log('Resposta do login:', response);
-
-          if (response) {
-            console.log('Login bem-sucedido!');
-            this.router.navigate(['/home']); 
-          } else {
-            this.errorMessage = 'Credenciais inválidas. Por favor, tente novamente.';
-          }
+        response => {
+          this.isLoading = false;
+          this.authService.setSession(response);
+          this.router.navigate(['/home']);
+          this.openSnackBar('Login realizado com sucesso!');
         },
-        (error) => {
-          console.error('Erro no login:', error);
-          this.errorMessage = 'Erro ao realizar login. Por favor, verifique o login e senha.';
+        error => {
+          this.isLoading = false;
+          this.openSnackBar('Login ou senha incorretos.');
         }
       );
     } else {
-      this.errorMessage = 'Por favor, preencha corretamente o usuário e senha.';
+      this.openSnackBar('Por favor, preencha corretamente o usuário e senha.');
     }
+  }
+
+  openSnackBar(message: string,) {
+    const snackBarConfig = {
+      duration: 3000
+    };
+    this.snackBar.open(message, 'Fechar', snackBarConfig);
   }
 }

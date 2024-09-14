@@ -3,19 +3,19 @@ import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  userName: string = '';
+  username: string = '';
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     const user = this.authService.getSession();
-    this.userName = user ? user.name : 'Nome nao carregou';
-  }
-
-  logout(): void {
-    this.authService.clearSession();
+    console.log('User from session:', user);
+    if (user) {
+      this.username = user.username;
+    }
   }
 }

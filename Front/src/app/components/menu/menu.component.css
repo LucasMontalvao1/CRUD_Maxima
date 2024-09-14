@@ -1,0 +1,36 @@
+.mat-toolbar {
+  display: flex;
+  align-items: center; /* Alinha os itens verticalmente no centro */
+  justify-content: space-between; /* Distribui espaço entre os itens */
+  padding: 0 16px; /* Adiciona um pouco de padding horizontal */
+}
+
+/* Título da navbar */
+.navbar-title {
+  font-size: 1.25rem; /* Tamanho do texto do título */
+  font-weight: bold;
+  margin-right: auto; /* Move o título para a esquerda */
+}
+
+/* Links da navbar */
+.navbar-link {
+  text-decoration: none;
+}
+
+/* Contêiner para os botões do menu */
+.menu-buttons {
+  display: flex;
+  align-items: center;
+}
+
+/* Estilos dos botões */
+button {
+  margin-left: 8px;
+  font-size: 0.875rem; /* Tamanho do texto dos botões */
+  padding: 4px 12px; /* Padding dos botões */
+}
+
+/* Espaçador para empurrar o botão de logout para o final da toolbar */
+.spacer {
+  flex: 1 1 auto;
+}
