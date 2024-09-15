@@ -61,7 +61,7 @@ namespace API.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Erro ao recuperar o produto com ID {id}.");
-                return StatusCode(500, $"Ocorreu um erro ao recuperar o produto com ID {id}.");
+                return StatusCode(500, $"Não foi localziado produto com ID {id}.");
             }
         }
 
@@ -87,7 +87,7 @@ namespace API.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Erro ao recuperar o produto com código {codigo}.");
-                return StatusCode(500, $"Ocorreu um erro ao recuperar o produto com código {codigo}.");
+                return StatusCode(500, $"Produto com código {codigo} não encontrado.");
             }
         }
 
@@ -102,13 +102,18 @@ namespace API.Controllers
 
             try
             {
-                var productId = await _productService.AddProductAsync(productDto);
-                return CreatedAtAction(nameof(GetById), new { id = productId }, productDto);
+                var result = await _productService.AddProductAsync(productDto);
+                return CreatedAtAction(nameof(GetById), new { id = ((dynamic)result).id }, result);
+            }
+            catch (ArgumentException ex)
+            {
+                _logger.LogWarning(ex, "Erro de validação ao adicionar o produto.");
+                return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Erro ao adicionar novo produto.");
-                return StatusCode(500, $"Erro ao adicionar o produto: {ex.Message}");
+                return StatusCode(500, "Erro ao adicionar o produto.");
             }
         }
 

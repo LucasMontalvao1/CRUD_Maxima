@@ -11,7 +11,7 @@ namespace API.Services.Interfaces
 
         Task<Product> GetByCodigoAsync(string codigo);
 
-        Task<int> AddProductAsync(ProductAddDTO productDto);
+        Task<object> AddProductAsync(ProductAddDTO productDto);
 
         Task<int> UpdateProductAsync(int id, ProductDTO productDto);
 

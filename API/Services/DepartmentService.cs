@@ -1,5 +1,4 @@
 ﻿using API.Models;
-using API.Models.DTOs;
 using API.Repositorys.Interfaces;
 using API.Services.Interfaces;
 using System;
@@ -37,10 +36,6 @@ namespace API.Services
             try
             {
                 var department = await _departmentRepository.GetByCodigoAsync(codigo);
-                if (department == null)
-                {
-                    throw new KeyNotFoundException($"Departamento com código {codigo} não encontrado.");
-                }
                 return department;
             }
             catch (Exception ex)
@@ -52,7 +47,7 @@ namespace API.Services
         public async Task<bool> ExistsAsync(string codigo)
         {
             if (string.IsNullOrWhiteSpace(codigo))
-                throw new ArgumentException("O código do departamento não pode estar vazio.", nameof(codigo));
+                return false; 
 
             try
             {

@@ -3,6 +3,7 @@ using API.Models;
 using API.Models.DTOs;
 using API.Repositorys.Interfaces;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Common;
 using System.Data;
 
 namespace API.Repositorys
@@ -181,7 +182,8 @@ namespace API.Repositorys
             }
 
             var query = @"INSERT INTO Product (Codigo, Descricao, Preco, Status, CodigoDepartamento, Deletado)
-                      VALUES (@Codigo, @Descricao, @Preco, @Status, @CodigoDepartamento, FALSE)";
+                        VALUES (@Codigo, @Descricao, @Preco, @Status, @CodigoDepartamento, FALSE);
+                        SELECT LAST_INSERT_ID();";
 
             try
             {
@@ -193,7 +195,8 @@ namespace API.Repositorys
                     command.Parameters.AddWithValue("@Status", product.Status);
                     command.Parameters.AddWithValue("@CodigoDepartamento", product.CodigoDepartamento);
 
-                    return await command.ExecuteNonQueryAsync();
+                    var result = await command.ExecuteScalarAsync();
+                    return Convert.ToInt32(result);
                 }
             }
             catch (MySqlException ex)

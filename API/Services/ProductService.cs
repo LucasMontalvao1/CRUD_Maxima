@@ -70,7 +70,7 @@ namespace API.Services
             }
         }
 
-        public async Task<int> AddProductAsync(ProductAddDTO productDto)
+        public async Task<object> AddProductAsync(ProductAddDTO productDto)
         {
             if (productDto == null)
                 throw new ArgumentNullException(nameof(productDto));
@@ -93,7 +93,17 @@ namespace API.Services
                 if (!departmentExists)
                     throw new ArgumentException("O código do departamento não é válido.", nameof(product.CodigoDepartamento));
 
-                return await _productRepository.AddProductAsync(product);
+                var productId = await _productRepository.AddProductAsync(product);
+
+                return new
+                {
+                    id = productId,
+                    product.Codigo,
+                    product.Descricao,
+                    product.Preco,
+                    product.Status,
+                    product.CodigoDepartamento
+                };
             }
             catch (Exception ex)
             {

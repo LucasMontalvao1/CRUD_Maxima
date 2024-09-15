@@ -4,7 +4,7 @@ export const environment = {
   production: false,
   apiUrl: apiUrl,
   endpoints: {
-    login: `${apiUrl}/Api/v1/login`,
+    login: `${apiUrl}/Api/login`,
     products: `${apiUrl}/Api/products`,
     departments: `${apiUrl}/Api/departments`,
   },

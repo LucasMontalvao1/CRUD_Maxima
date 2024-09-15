@@ -2,18 +2,21 @@
 using API.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace API.Controllers
 {
+    [Route("api/")]
     [ApiController]
-    [Route("api/v1/")]
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;
+        private readonly ILogger<AuthController> _logger;
 
-        public AuthController(IAuthService authService)
+        public AuthController(IAuthService authService, ILogger<AuthController> logger)
         {
             _authService = authService;
+            _logger = logger;
         }
 
         [HttpPost("login")]
@@ -26,7 +29,7 @@ namespace API.Controllers
 
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return BadRequest(ModelState); 
             }
 
             try
@@ -45,11 +48,13 @@ namespace API.Controllers
                         }
                     });
                 }
-                return Unauthorized("Login ou senha incorretos");
+
+                return Unauthorized("Login ou senha incorretos.");
             }
             catch (Exception ex)
             {
-                return StatusCode(500, "Erro ao processar a solicitação de login.");
+                _logger.LogError(ex, "Erro ao tentar logar o usuário com username: {username}", userDto.Username);
+                return StatusCode(500, "Dados de login incorretos.");
             }
         }
     }

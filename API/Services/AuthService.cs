@@ -3,16 +3,19 @@ using API.Repositorys.Interfaces;
 using API.Services.Interfaces;
 using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace API.Services
 {
     public class AuthService : IAuthService
     {
         private readonly IAuthRepository _authRepository;
+        private readonly ILogger<AuthService> _logger; // Adicionando Logger
 
-        public AuthService(IAuthRepository authRepository)
+        public AuthService(IAuthRepository authRepository, ILogger<AuthService> logger)
         {
             _authRepository = authRepository;
+            _logger = logger;
         }
 
         public async Task<User> ValidarUsuarioAsync(string username, string password)
@@ -29,6 +32,7 @@ namespace API.Services
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "Erro ao validar o usuário com username: {username}", username); 
                 throw new ApplicationException("Erro ao validar o usuário.", ex);
             }
         }

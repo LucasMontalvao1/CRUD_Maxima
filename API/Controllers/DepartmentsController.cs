@@ -23,16 +23,11 @@ namespace API.Controllers
             try
             {
                 var departments = await _departmentService.GetAllAsync();
-                if (departments == null || !departments.Any())
-                {
-                    return Ok(departments);
-                }
-
                 return Ok(departments);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Erro ao recuperar departamentos: {ex.Message}");
+                return StatusCode(500, "Erro ao recuperar departamentos.");
             }
         }
 
