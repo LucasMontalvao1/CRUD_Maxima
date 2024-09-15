@@ -93,6 +93,7 @@ namespace API.Services
                 if (!departmentExists)
                     throw new ArgumentException("O código do departamento não é válido.", nameof(product.CodigoDepartamento));
 
+
                 var productId = await _productRepository.AddProductAsync(product);
 
                 return new
@@ -147,6 +148,7 @@ namespace API.Services
                 throw new ApplicationException($"Erro ao atualizar o produto com ID {id}.", ex);
             }
         }
+
 
 
 

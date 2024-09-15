@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class ProductsController : ControllerBase
     {
         private readonly IProductService _productService;
@@ -113,7 +113,7 @@ namespace API.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Erro ao adicionar novo produto.");
-                return StatusCode(500, "Erro ao adicionar o produto.");
+                return StatusCode(500, "Dados incorretos para adicioanr o produto");
             }
         }
 
