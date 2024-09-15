@@ -1,7 +1,7 @@
 .product-container {
   position: relative;
   margin: 16px;
-  padding-bottom: 56px; 
+  padding-bottom: 56px;
 }
 
 .create-product-button {
@@ -9,81 +9,76 @@
   top: 16px;
   right: 16px;
   z-index: 10;
-  margin-bottom: 80px; /* Aumenta ainda mais o espaço abaixo do botão "Criar Produto" */
-}
-
-.mat-card-header-title {
-  font-size: 25px; /* Ajuste o tamanho da fonte conforme necessário */
-  font-weight: bold; /* Adiciona negrito ao título */
-  margin: 0; /* Remove margens extras, se necessário */
 }
 
 .mat-card-header {
   position: relative;
-  padding: 16px 24px; /* Adiciona mais espaçamento ao redor do título e do botão */
-  margin-bottom: 40px; /* Aumenta a margem inferior do título */
-  font-size: 36px; /* Aumenta o tamanho da fonte do título */
-  font-weight: bold; /* Adiciona negrito ao título */
-  padding-bottom: 24px; /* Adiciona mais espaçamento extra abaixo do título */
-  text-align: center; /* Centraliza o texto do título */
-}
-
-.no-products {
+  padding: 16px 24px;
+  font-size: 36px;
+  font-weight: bold;
   text-align: center;
-  margin-top: 32px; /* Aumenta a margem superior para separar melhor da tabela */
+  margin-bottom: 16px; 
 }
 
-mat-paginator {
-  display: block;
-  margin-top: 32px; /* Aumenta a margem superior para separar da tabela */
-  width: 100%; 
+.mat-card-header-title {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 0;
 }
 
-/* Estilo para os ícones */
-.action-buttons button {
-  border-radius: 4px; /* Adiciona bordas arredondadas aos botões */
-  margin: 0 8px; /* Aumenta a margem lateral para separar melhor os botões */
+.search-container {
+  margin-top: 40px; 
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 5px;
 }
 
-/* Ícone de Editar */
-.action-buttons .edit-button {
-  color: #1976d2; /* Cor azul do Material Design */
+.search-field {
+  width: 100%;
+  margin: auto; 
+  height: 40px; 
 }
 
-/* Ícone de Excluir */
-.action-buttons .delete-button {
-  color: #d32f2f; /* Cor vermelha do Material Design */
+mat-table {
+  margin-top: 16px; 
 }
 
-/* Alinha o texto das células e cabeçalhos ao centro */
 .mat-header-cell, .mat-cell {
-  text-align: center; /* Centraliza o texto nas células */
+  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Alinha o cabeçalho da coluna de ações */
-.mat-header-cell.mat-column-actions {
-  text-align: center; /* Centraliza o cabeçalho na coluna de ações */
-  font-weight: bold; /* Adiciona negrito ao cabeçalho */
-}
-
-/* Alinha o conteúdo da coluna de ações */
+.mat-header-cell.mat-column-actions,
 .mat-cell.mat-column-actions {
-  display: flex;
-  justify-content: center; /* Centraliza horizontalmente os ícones */
-  align-items: center; /* Centraliza verticalmente os ícones */
-  padding: 8px 0; /* Adiciona padding vertical para aumentar o espaço ao redor dos ícones */
+  justify-content: center;
 }
 
-/* Ajusta o tamanho dos ícones se necessário */
 .mat-icon {
-  font-size: 24px; /* Ajusta o tamanho dos ícones */
+  font-size: 24px;
 }
 
-/* Ajusta a margem da tabela para separar dos outros elementos */
-mat-table {
-  margin-top: 40px; /* Aumenta a margem acima da tabela para separá-la do botão "Criar Produto" */
-  margin-bottom: 32px; /* Adiciona uma margem abaixo da tabela */
+.action-buttons button {
+  border-radius: 4px;
+  margin: 0 8px;
+}
+
+.edit-button {
+  color: #1976d2;
+}
+
+.delete-button {
+  color: #d32f2f;
+}
+
+.no-products {
+  text-align: center;
+  margin-top: 32px;
+}
+
+mat-paginator {
+  display: block;
+  margin-top: 32px;
+  width: 100%;
 }

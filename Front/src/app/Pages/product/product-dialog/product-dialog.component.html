@@ -23,15 +23,7 @@
     </mat-form-field>
 
     <div class="form-row">
-
-      <mat-form-field appearance="fill" class="field-half">
-        <mat-label>Preço</mat-label>
-        <input matInput formControlName="preco" type="number">
-        <mat-error *ngIf="productForm.get('preco')?.hasError('required')">Campo obrigatório</mat-error>
-        <mat-error *ngIf="productForm.get('preco')?.hasError('precoInvalido')">O preço não pode ser 0</mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" class="field-department">
         <mat-label>Departamento</mat-label>
         <mat-select formControlName="codigodepartamento" placeholder="Selecione um departamento">
           <mat-option *ngFor="let department of departments" [value]="department.codigo">
@@ -41,11 +33,18 @@
         <mat-error *ngIf="productForm.get('codigodepartamento')?.invalid">Campo obrigatório</mat-error>
       </mat-form-field>
 
+      <mat-form-field appearance="fill" class="field-price">
+        <mat-label>Preço</mat-label>
+        <input matInput formControlName="preco" type="number">
+        <mat-error *ngIf="productForm.get('preco')?.hasError('required')">Campo obrigatório</mat-error>
+        <mat-error *ngIf="productForm.get('preco')?.hasError('precoInvalido')">O preço não pode ser menor que
+          1</mat-error>
+      </mat-form-field>
     </div>
   </form>
 </mat-dialog-content>
 
 <mat-dialog-actions class="dialog-buttons">
-  <button mat-raised-button class="save-button" (click)="onSave()" [disabled]="productForm.invalid">Salvar</button>
   <button mat-button class="cancel-button" (click)="onCancel()">Cancelar</button>
+  <button mat-raised-button class="save-button" (click)="onSave()" [disabled]="productForm.invalid">Salvar</button>
 </mat-dialog-actions>

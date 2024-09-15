@@ -1829,3 +1829,341 @@
 2024-09-15 00:59:12.180 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 25.5841ms
 2024-09-15 00:59:12.181 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
 2024-09-15 00:59:12.182 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 37.6911ms
+2024-09-15 01:06:48.366 -03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7263/Api/v1/login - null null
+2024-09-15 01:06:48.369 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:06:48.370 -03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7263/Api/v1/login - 204 null null 3.9141ms
+2024-09-15 01:06:48.371 -03:00 [INF] Request starting HTTP/2 POST https://localhost:7263/Api/v1/login - application/json 32
+2024-09-15 01:06:48.373 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:06:48.374 -03:00 [INF] Executing endpoint 'API.Controllers.AuthController.Login (API)'
+2024-09-15 01:06:48.375 -03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(API.Models.DTO.UserDto) on controller API.Controllers.AuthController (API).
+2024-09-15 01:06:48.458 -03:00 [INF] Executing UnauthorizedObjectResult, writing value of type 'System.String'.
+2024-09-15 01:06:48.461 -03:00 [INF] Executed action API.Controllers.AuthController.Login (API) in 85.4003ms
+2024-09-15 01:06:48.463 -03:00 [INF] Executed endpoint 'API.Controllers.AuthController.Login (API)'
+2024-09-15 01:06:48.464 -03:00 [INF] Request finished HTTP/2 POST https://localhost:7263/Api/v1/login - 401 null text/plain; charset=utf-8 92.4329ms
+2024-09-15 01:06:51.428 -03:00 [INF] Request starting HTTP/2 POST https://localhost:7263/Api/v1/login - application/json 31
+2024-09-15 01:06:51.439 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:06:51.441 -03:00 [INF] Executing endpoint 'API.Controllers.AuthController.Login (API)'
+2024-09-15 01:06:51.442 -03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(API.Models.DTO.UserDto) on controller API.Controllers.AuthController (API).
+2024-09-15 01:06:51.448 -03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[<>f__AnonymousType1`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:06:51.450 -03:00 [INF] Executed action API.Controllers.AuthController.Login (API) in 4.1118ms
+2024-09-15 01:06:51.452 -03:00 [INF] Executed endpoint 'API.Controllers.AuthController.Login (API)'
+2024-09-15 01:06:51.452 -03:00 [INF] Request finished HTTP/2 POST https://localhost:7263/Api/v1/login - 200 null application/json; charset=utf-8 25.1592ms
+2024-09-15 01:06:51.519 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:06:51.522 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:06:51.524 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:06:51.525 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:06:51.578 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:06:51.590 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 63.8603ms
+2024-09-15 01:06:51.591 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:06:51.592 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 73.102ms
+2024-09-15 01:07:02.961 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/departments - null null
+2024-09-15 01:07:02.967 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:07:02.967 -03:00 [INF] Executing endpoint 'API.Controllers.DepartmentsController.GetAll (API)'
+2024-09-15 01:07:02.968 -03:00 [INF] Route matched with {action = "GetAll", controller = "Departments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.DepartmentsController (API).
+2024-09-15 01:07:02.972 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Department, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:07:02.974 -03:00 [INF] Executed action API.Controllers.DepartmentsController.GetAll (API) in 3.1726ms
+2024-09-15 01:07:02.976 -03:00 [INF] Executed endpoint 'API.Controllers.DepartmentsController.GetAll (API)'
+2024-09-15 01:07:02.978 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/departments - 200 null application/json; charset=utf-8 16.4876ms
+2024-09-15 01:07:08.262 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:07:08.266 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:07:08.267 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:07:08.268 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:07:08.274 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:07:08.276 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 5.3732ms
+2024-09-15 01:07:08.277 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:07:08.278 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 15.9323ms
+2024-09-15 01:11:14.481 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:11:14.486 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:11:14.487 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:11:14.487 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:11:14.493 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:11:14.495 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 5.9332ms
+2024-09-15 01:11:14.502 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:11:14.503 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 22.0928ms
+2024-09-15 01:12:51.614 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:12:51.618 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:12:51.618 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:12:51.619 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:12:51.622 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:12:51.627 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 6.3903ms
+2024-09-15 01:12:51.628 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:12:51.629 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 14.7134ms
+2024-09-15 01:13:29.840 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:13:29.842 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:13:29.843 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:13:29.844 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:13:29.847 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:13:29.849 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 4.3744ms
+2024-09-15 01:13:29.850 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:13:29.851 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 11.9119ms
+2024-09-15 01:14:08.937 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:14:08.942 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:14:08.942 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:14:08.943 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:14:08.947 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:14:08.948 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 3.4361ms
+2024-09-15 01:14:08.949 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:14:08.950 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 12.185ms
+2024-09-15 01:14:38.992 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:14:38.996 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:14:38.996 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:14:38.997 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:14:39.001 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:14:39.003 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 4.1286ms
+2024-09-15 01:14:39.004 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:14:39.005 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 12.9375ms
+2024-09-15 01:14:51.908 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:14:51.913 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:14:51.914 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:14:51.914 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:14:51.917 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:14:51.918 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 3.1779ms
+2024-09-15 01:14:51.920 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:14:51.920 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 12.1822ms
+2024-09-15 01:15:28.177 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:15:28.182 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:15:28.183 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:15:28.184 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:15:28.189 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:15:28.190 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 3.8871ms
+2024-09-15 01:15:28.195 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:15:28.196 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 18.3938ms
+2024-09-15 01:15:39.490 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:15:39.494 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:15:39.495 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:15:39.496 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:15:39.499 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:15:39.500 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 2.5788ms
+2024-09-15 01:15:39.501 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:15:39.501 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 11.0666ms
+2024-09-15 01:15:45.545 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:15:45.555 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:15:45.556 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:15:45.556 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:15:45.562 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:15:45.563 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 5.3423ms
+2024-09-15 01:15:45.565 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:15:45.569 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 23.7142ms
+2024-09-15 01:15:48.110 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:15:48.115 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:15:48.116 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:15:48.118 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:15:48.125 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:15:48.127 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 5.967ms
+2024-09-15 01:15:48.133 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:15:48.135 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 24.6141ms
+2024-09-15 01:15:51.907 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:15:51.910 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:15:51.911 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:15:51.911 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:15:51.914 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:15:51.915 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 2.9712ms
+2024-09-15 01:15:51.917 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:15:51.918 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 10.6894ms
+2024-09-15 01:15:54.454 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:15:54.457 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:15:54.458 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:15:54.459 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:15:54.466 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:15:54.468 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 6.1486ms
+2024-09-15 01:15:54.470 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:15:54.471 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 17.4541ms
+2024-09-15 01:15:59.483 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:15:59.489 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:15:59.490 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:15:59.491 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:15:59.496 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:15:59.498 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 5.0117ms
+2024-09-15 01:15:59.499 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:15:59.501 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 17.5337ms
+2024-09-15 01:16:02.798 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:16:02.801 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:16:02.802 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:16:02.803 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:16:02.807 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:16:02.809 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 4.6369ms
+2024-09-15 01:16:02.810 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:16:02.812 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 13.6363ms
+2024-09-15 01:16:05.589 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:16:05.593 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:16:05.595 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:16:05.596 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:16:05.599 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:16:05.601 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 3.706ms
+2024-09-15 01:16:05.602 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:16:05.605 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 16.6999ms
+2024-09-15 01:16:08.303 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:16:08.307 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:16:08.307 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:16:08.308 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:16:08.314 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:16:08.316 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 7.2798ms
+2024-09-15 01:16:08.317 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:16:08.318 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 14.762ms
+2024-09-15 01:16:12.841 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:16:12.847 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:16:12.847 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:16:12.848 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:16:12.851 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:16:12.852 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 3.3003ms
+2024-09-15 01:16:12.854 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:16:12.854 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 13.2687ms
+2024-09-15 01:16:13.951 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:16:13.954 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:16:13.955 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:16:13.960 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:16:13.966 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:16:13.968 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 3.9036ms
+2024-09-15 01:16:13.969 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:16:13.970 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 19.6008ms
+2024-09-15 01:16:20.194 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:16:20.198 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:16:20.198 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:16:20.199 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:16:20.206 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:16:20.208 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 7.0123ms
+2024-09-15 01:16:20.210 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:16:20.211 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 16.8366ms
+2024-09-15 01:16:57.155 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:16:57.158 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:16:57.159 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:16:57.160 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:16:57.165 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:16:57.167 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 4.6901ms
+2024-09-15 01:16:57.168 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:16:57.169 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 14.457ms
+2024-09-15 01:17:07.650 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:17:07.654 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:17:07.654 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:17:07.655 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:17:07.658 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:17:07.659 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 3.3482ms
+2024-09-15 01:17:07.661 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:17:07.664 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 14.5303ms
+2024-09-15 01:17:15.901 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:17:15.904 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:17:15.905 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:17:15.906 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:17:15.911 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:17:15.915 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 6.9583ms
+2024-09-15 01:17:15.916 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:17:15.917 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 16.6412ms
+2024-09-15 01:19:53.957 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:19:53.961 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:19:53.962 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:19:53.963 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:19:53.968 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:19:53.969 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 4.0429ms
+2024-09-15 01:19:53.976 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:19:53.977 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 20.421ms
+2024-09-15 01:20:21.276 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:20:21.280 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:20:21.282 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:20:21.282 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:20:21.288 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:20:21.293 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 6.5709ms
+2024-09-15 01:20:21.295 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:20:21.297 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 21.3449ms
+2024-09-15 01:21:10.455 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:21:10.460 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:21:10.461 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:21:10.461 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:21:10.464 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:21:10.466 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 3.3269ms
+2024-09-15 01:21:10.466 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:21:10.467 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 11.7495ms
+2024-09-15 01:22:13.365 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:22:13.368 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:22:13.369 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:22:13.370 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:22:13.375 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:22:13.380 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 7.8289ms
+2024-09-15 01:22:13.382 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:22:13.383 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 17.6765ms
+2024-09-15 01:22:44.025 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:22:44.030 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:22:44.031 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:22:44.031 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:22:44.034 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:22:44.035 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 2.7816ms
+2024-09-15 01:22:44.037 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:22:44.038 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 12.9662ms
+2024-09-15 01:22:48.946 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:22:48.950 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:22:48.951 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:22:48.955 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:22:48.958 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:22:48.959 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 2.6098ms
+2024-09-15 01:22:48.960 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:22:48.961 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 15.0131ms
+2024-09-15 01:23:26.280 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:23:26.289 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:23:26.290 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:23:26.291 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:23:26.294 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:23:26.296 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 3.312ms
+2024-09-15 01:23:26.297 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:23:26.298 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 17.5122ms
+2024-09-15 01:23:43.926 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/departments - null null
+2024-09-15 01:23:43.931 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:23:43.932 -03:00 [INF] Executing endpoint 'API.Controllers.DepartmentsController.GetAll (API)'
+2024-09-15 01:23:43.933 -03:00 [INF] Route matched with {action = "GetAll", controller = "Departments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.DepartmentsController (API).
+2024-09-15 01:23:43.937 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Department, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:23:43.939 -03:00 [INF] Executed action API.Controllers.DepartmentsController.GetAll (API) in 4.2582ms
+2024-09-15 01:23:43.940 -03:00 [INF] Executed endpoint 'API.Controllers.DepartmentsController.GetAll (API)'
+2024-09-15 01:23:43.941 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/departments - 200 null application/json; charset=utf-8 15.2122ms
+2024-09-15 01:23:54.416 -03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7263/Api/products - null null
+2024-09-15 01:23:54.423 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:23:54.425 -03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7263/Api/products - 204 null null 8.8406ms
+2024-09-15 01:23:54.427 -03:00 [INF] Request starting HTTP/2 POST https://localhost:7263/Api/products - application/json 90
+2024-09-15 01:23:54.431 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:23:54.432 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.Post (API)'
+2024-09-15 01:23:54.464 -03:00 [INF] Route matched with {action = "Post", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Post(API.Models.DTOs.ProductAddDTO) on controller API.Controllers.ProductsController (API).
+2024-09-15 01:23:54.539 -03:00 [INF] Executing CreatedAtActionResult, writing value of type 'API.Models.DTOs.ProductAddDTO'.
+2024-09-15 01:23:54.586 -03:00 [INF] Executed action API.Controllers.ProductsController.Post (API) in 119.382ms
+2024-09-15 01:23:54.588 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.Post (API)'
+2024-09-15 01:23:54.589 -03:00 [INF] Request finished HTTP/2 POST https://localhost:7263/Api/products - 201 null application/json; charset=utf-8 162.786ms
+2024-09-15 01:23:54.696 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:23:54.705 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:23:54.706 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:23:54.707 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:23:54.710 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:23:54.712 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 3.5236ms
+2024-09-15 01:23:54.712 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:23:54.713 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 17.8451ms
+2024-09-15 01:24:01.338 -03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7263/Api/products/26 - null null
+2024-09-15 01:24:01.345 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:24:01.346 -03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7263/Api/products/26 - 204 null null 7.8862ms
+2024-09-15 01:24:01.349 -03:00 [INF] Request starting HTTP/2 DELETE https://localhost:7263/Api/products/26 - null null
+2024-09-15 01:24:01.355 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:24:01.355 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.DeleteProduct (API)'
+2024-09-15 01:24:01.362 -03:00 [INF] Route matched with {action = "DeleteProduct", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteProduct(Int32) on controller API.Controllers.ProductsController (API).
+2024-09-15 01:24:01.390 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2024-09-15 01:24:01.392 -03:00 [INF] Executed action API.Controllers.ProductsController.DeleteProduct (API) in 26.6834ms
+2024-09-15 01:24:01.394 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.DeleteProduct (API)'
+2024-09-15 01:24:01.395 -03:00 [INF] Request finished HTTP/2 DELETE https://localhost:7263/Api/products/26 - 200 null text/plain; charset=utf-8 46.0646ms
+2024-09-15 01:24:01.397 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:24:01.399 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:24:01.399 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:24:01.400 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:24:01.403 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:24:01.406 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 4.8458ms
+2024-09-15 01:24:01.407 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:24:01.408 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 10.2736ms
+2024-09-15 01:24:03.848 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/departments - null null
+2024-09-15 01:24:03.853 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:24:03.854 -03:00 [INF] Executing endpoint 'API.Controllers.DepartmentsController.GetAll (API)'
+2024-09-15 01:24:03.855 -03:00 [INF] Route matched with {action = "GetAll", controller = "Departments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.DepartmentsController (API).
+2024-09-15 01:24:03.857 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Department, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:24:03.862 -03:00 [INF] Executed action API.Controllers.DepartmentsController.GetAll (API) in 6.2311ms
+2024-09-15 01:24:03.865 -03:00 [INF] Executed endpoint 'API.Controllers.DepartmentsController.GetAll (API)'
+2024-09-15 01:24:03.868 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/departments - 200 null application/json; charset=utf-8 19.6346ms
+2024-09-15 01:24:07.892 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7263/Api/products - null null
+2024-09-15 01:24:07.899 -03:00 [INF] CORS policy execution successful.
+2024-09-15 01:24:07.900 -03:00 [INF] Executing endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:24:07.900 -03:00 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller API.Controllers.ProductsController (API).
+2024-09-15 01:24:07.906 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[API.Models.Product, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-09-15 01:24:07.909 -03:00 [INF] Executed action API.Controllers.ProductsController.GetAll (API) in 8.2529ms
+2024-09-15 01:24:07.911 -03:00 [INF] Executed endpoint 'API.Controllers.ProductsController.GetAll (API)'
+2024-09-15 01:24:07.912 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7263/Api/products - 200 null application/json; charset=utf-8 20.6041ms
+2024-09-15 01:24:32.299 -03:00 [INF] Application is shutting down...

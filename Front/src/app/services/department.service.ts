@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Department } from '../models/department.model';
@@ -9,7 +9,7 @@ import { Department } from '../models/department.model';
 })
 export class DepartmentService {
 
-  private apiUrl = `${environment.departmentsEndpoint}`;
+  private apiUrl = `${environment.endpoints.departments}`;
 
   constructor(private http: HttpClient) { }
 

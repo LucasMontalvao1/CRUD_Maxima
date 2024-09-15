@@ -12,12 +12,10 @@ export class ConfirmDialogComponent {
     public dialogRef: MatDialogRef<ConfirmDialogComponent>
   ) { }
 
-  // Método chamado quando o usuário confirma a ação
   onConfirm(): void {
     this.dialogRef.close(true);
   }
 
-  // Método chamado quando o usuário cancela a ação
   onCancel(): void {
     this.dialogRef.close(false);
   }

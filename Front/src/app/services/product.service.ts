@@ -9,7 +9,7 @@ import { Product } from '../models/product.model';
 })
 export class ProductService {
 
-  private apiUrl = `${environment.productsEndpoint}`;
+  private apiUrl = `${environment.endpoints.products}`;
 
   constructor(private http: HttpClient) { }
 

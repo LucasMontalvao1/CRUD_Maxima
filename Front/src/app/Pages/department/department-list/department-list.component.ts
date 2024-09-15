@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { DepartmentService } from '../../../services/department.service'; // Substitua pelo seu serviço
-import { Department } from '../../../models/department.model'; // Substitua pelo seu modelo
+import { DepartmentService } from '../../../services/department.service';
+import { Department } from '../../../models/department.model';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({

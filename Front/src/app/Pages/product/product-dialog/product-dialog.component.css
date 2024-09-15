@@ -1,108 +1,106 @@
-/* Estilo para o container do diálogo */
 .product-dialog-container {
   padding: 20px;
 }
 
-/* Estilo para o título do diálogo */
 .mat-dialog-title {
   font-size: 25px;
   font-weight: bold;
-  margin-bottom: 20px; /* Espaçamento abaixo do título */
+  margin-bottom: 20px; 
 }
 
-/* Estilo para os campos do formulário */
 .mat-form-field {
   width: 100%;
-  margin-bottom: 16px; /* Espaçamento entre os campos do formulário */
+  margin-bottom: 16px;
 }
 
-/* Estilo para a linha do formulário */
 .form-row {
   display: flex;
   align-items: center;
-  margin-bottom: 20px; /* Espaçamento entre linhas */
+  margin-bottom: 20px; 
 }
 
-/* Estilo para os campos com largura parcial */
 .field-half {
   flex: 1;
-  margin-right: 16px; /* Espaçamento entre os campos */
+  margin-right: 16px; 
   width: 100%;
 }
 
-/* Estilo para o container dos botões de status */
+.field-department {
+  flex: 2; 
+  margin-right: 16px; 
+}
+
+.field-price {
+  flex: 1; 
+}
+
+
 .status-buttons {
   display: flex;
   align-items: center;
-  gap: 16px; /* Espaçamento entre os botões */
+  gap: 16px; 
+  margin-left: 16px; 
 }
 
-/* Estilo para os botões de status */
 .status-buttons button {
-  width: 100px; /* Largura dos botões */
-  height: 40px; /* Altura dos botões */
+  width: 100px; 
+  height: 40px; 
 }
 
-/* Estilo para o botão ativo */
 .active {
-  background-color: #007bff; /* Azul para o ativo */
+  background-color: #007bff; 
   color: white;
 }
 
-/* Estilo para o botão inativo */
 .inactive {
-  background-color: #dc3545; /* Vermelho para o inativo */
+  background-color: #dc3545; 
   color: white;
 }
 
-/* Estilo para o container dos botões */
 .dialog-buttons {
   display: flex;
-  justify-content: space-between; /* Alinha os botões com espaço entre eles */
-  margin-top: 20px; /* Espaço acima dos botões */
+  justify-content: space-between; 
+  margin-top: 20px; 
 }
 
-/* Estilo para o botão de salvar e cancelar */
 .save-button, .cancel-button {
-  width: 48%; /* Cada botão ocupa metade da largura do container */
-  height: 40px; /* Altura dos botões */
-  transition: background-color 0.3s, border 0.3s; /* Efeito de transição suave */
-  border-radius: 4px; /* Bordas arredondadas dos botões */
+  width: 48%; 
+  height: 40px; 
+  transition: background-color 0.3s, border 0.3s; 
+  border-radius: 4px; 
 }
 
-/* Estilo específico para o botão de salvar */
 .save-button {
-  background-color: #007bff; /* Cor padrão (azul) */
+  background-color: #007bff; 
   color: white;
 }
 
-/* Botão de salvar desativado */
 .save-button:disabled {
-  background-color: #cce5ff; /* Cor clara quando desativado */
-  color: #004085; /* Cor do texto quando desativado */
+  background-color: #cce5ff; 
+  color: #004085; 
 }
 
-/* Estilo de hover para o botão de salvar */
 .save-button:hover:not(:disabled) {
-  background-color: #0056b3; /* Azul escuro para hover */
+  background-color: #0056b3; 
 }
 
-/* Estilo específico para o botão de cancelar */
 .cancel-button {
-  background-color: #dc3545; /* Vermelho para cancelar */
+  background-color: #dc3545; 
   color: white;
 }
 
-/* Estilo de hover para o botão de cancelar */
 .cancel-button:hover {
-  background-color: #c82333; /* Vermelho escuro para hover */
+  background-color: #c82333; 
 }
 
-/* Estilo para os ícones no formulário (opcional) */
 .mat-icon {
   cursor: pointer;
 }
 
 .full-width {
-  width: 100%; /* Garante que o campo ocupe toda a largura disponível */
+  width: 100%; 
+}
+
+.dialog-buttons {
+  margin-top: 10px; 
 }

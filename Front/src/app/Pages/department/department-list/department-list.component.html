@@ -7,30 +7,25 @@
 
   <mat-table [dataSource]="dataSource" matSort>
 
-    <!-- Coluna Código -->
     <ng-container matColumnDef="codigo">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Código</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.codigo}}</mat-cell>
     </ng-container>
 
-    <!-- Coluna Descrição -->
     <ng-container matColumnDef="descricao">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Descrição</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.descricao}}</mat-cell>
     </ng-container>
 
-    <!-- Linhas e Cabeçalhos -->
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
   </mat-table>
 
-  <!-- Mensagem quando não houver departamentos -->
   <div class="no-department" *ngIf="!dataSource.data.length">
     Nenhum departamento encontrado
   </div>
 
-  <!-- Paginador -->
   <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 
 

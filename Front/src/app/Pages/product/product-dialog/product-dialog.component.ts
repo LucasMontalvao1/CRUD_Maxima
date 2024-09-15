@@ -26,7 +26,6 @@ export class ProductDialogComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Inicialize o form com os campos e validadores
     this.productForm = this.fb.group({
       codigo: ['', Validators.required],
       descricao: ['', Validators.required],
@@ -35,10 +34,8 @@ export class ProductDialogComponent implements OnInit {
       codigodepartamento: ['', Validators.required]
     });
 
-    // Carregar os departamentos
     this.loadDepartments();
 
-    // Verificar se estamos no modo de edição
     if (this.data?.product?.id) {
       this.isEditMode = true;
       this.productService.getProductById(this.data.product.id).subscribe(product => {
@@ -58,7 +55,7 @@ export class ProductDialogComponent implements OnInit {
   }
 
   precoValidator(control: FormControl): { [key: string]: boolean } | null {
-    if (control.value === 0) {
+    if (control.value <= 0) {
       return { 'precoInvalido': true };
     }
     return null;
@@ -69,7 +66,6 @@ export class ProductDialogComponent implements OnInit {
       this.departments = departments;
       console.log('Departamentos carregados:', departments);
 
-      // Se estivermos no modo de edição e os departamentos já foram carregados
       if (this.isEditMode) {
         this.setInitialDepartment();
       }
@@ -107,7 +103,7 @@ export class ProductDialogComponent implements OnInit {
 
     const productData = {
       ...this.productForm.value,
-      id: this.data?.product?.id // Passar o ID caso seja edição
+      id: this.data?.product?.id
     };
 
     if (this.isEditMode) {

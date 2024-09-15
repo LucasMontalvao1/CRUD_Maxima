@@ -1,43 +1,53 @@
 <mat-card class="product-container">
   <mat-card-header>
     <div class="mat-card-header-title">Produtos</div>
-    <button mat-raised-button color="primary" (click)="openProductDialog()" class="create-product-button">Criar
-      Produto</button>
+    <button mat-raised-button color="primary" (click)="openProductDialog()" class="create-product-button">
+      Criar Produto
+    </button>
   </mat-card-header>
+
+
+  <div class="search-container">
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Pesquisar</mat-label>
+      <input type="text" matInput [formControl]="searchControl" [matAutocomplete]="auto"
+        placeholder="Pesquisar por código, descrição ou departamento" (input)="applyFilter($event)">
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onAutocompleteSelection($event)">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option.descricao">
+          {{ option.codigo }} - {{ option.descricao }} - {{ option.department.descricao }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
 
   <mat-table [dataSource]="dataSource" matSort>
 
-    <!-- Coluna Código -->
     <ng-container matColumnDef="codigo">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Código</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.codigo}}</mat-cell>
     </ng-container>
 
-    <!-- Coluna Descrição -->
     <ng-container matColumnDef="descricao">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Descrição</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.descricao}}</mat-cell>
     </ng-container>
 
-    <!-- Coluna Preço -->
     <ng-container matColumnDef="preco">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Preço</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.preco | currency}}</mat-cell>
     </ng-container>
 
-    <!-- Coluna Status -->
     <ng-container matColumnDef="status">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.status ? 'Ativo' : 'Inativo'}}</mat-cell>
     </ng-container>
 
-    <!-- Coluna Departamento -->
     <ng-container matColumnDef="department">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Departamento</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.department?.descricao}}</mat-cell>
     </ng-container>
 
-    <!-- Coluna Ações -->
+
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
       <mat-cell *matCellDef="let element" class="action-buttons">
@@ -50,19 +60,14 @@
       </mat-cell>
     </ng-container>
 
-    <!-- Linhas e Cabeçalhos -->
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
   </mat-table>
 
-  <!-- Mensagem quando não houver produtos -->
   <div class="no-products" *ngIf="!dataSource.data.length">
     Nenhum produto encontrado
   </div>
 
-  <!-- Paginador -->
   <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-
-
 </mat-card>

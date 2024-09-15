@@ -8,6 +8,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ProductDialogComponent } from '../product-dialog/product-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { FormControl } from '@angular/forms';
+import { map, Observable, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -18,6 +20,9 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   products: Product[] = [];
   displayedColumns: string[] = ['codigo', 'descricao', 'preco', 'status', 'department', 'actions'];
   dataSource = new MatTableDataSource<Product>(this.products);
+
+  searchControl = new FormControl();
+  filteredOptions: Observable<Product[]> | undefined;
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   @ViewChild(MatSort) sort: MatSort | undefined;
@@ -30,6 +35,11 @@ export class ProductListComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.loadProducts();
+
+    this.filteredOptions = this.searchControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
   }
 
   ngAfterViewInit(): void {
@@ -42,12 +52,22 @@ export class ProductListComponent implements OnInit, AfterViewInit {
     if (this.sort) {
       this.dataSource.sort = this.sort;
     }
+
+    this.dataSource.filterPredicate = (data: Product, filter: string) => {
+      const dataStr = `${data.codigo} ${data.descricao} ${data.department.descricao}`.toLowerCase();
+      return dataStr.includes(filter);
+    };
   }
+
 
   loadProducts(): void {
     this.productService.getProducts().subscribe((data: Product[]) => {
       this.products = data;
       this.dataSource.data = this.products;
+      this.filteredOptions = this.searchControl.valueChanges.pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
     }, error => {
       console.error('Erro ao carregar produtos:', error);
       this.snackBar.open('Erro ao carregar produtos.', 'Fechar', { duration: 3000 });
@@ -56,20 +76,20 @@ export class ProductListComponent implements OnInit, AfterViewInit {
 
   openProductDialog(product?: Product): void {
     const dialogRef = this.dialog.open(ProductDialogComponent, {
-      width: '700px',
+      width: '750px',
       data: { product, reloadProducts: () => this.loadProducts() }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result?.success) {
-        this.loadProducts(); // Recarrega a lista de produtos após criação/edição
+        this.loadProducts();
       }
     });
   }
 
   openDeleteDialog(productId: number): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      width: '400px',
+      width: '450px',
       panelClass: 'confirm-dialog'
     });
 
@@ -87,9 +107,29 @@ export class ProductListComponent implements OnInit, AfterViewInit {
         this.snackBar.open(message, 'Fechar', { duration: 3000 });
       },
       error: (error) => {
-        this.snackBar.open('Erro ao deletar o produto.', 'Fechar', { duration: 3000 });
+        this.snackBar.open('Não foi possivel deletar, tente novamente..', 'Fechar', { duration: 3000 });
         console.error('Erro ao deletar produto:', error);
       }
     });
+  }
+
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    this.dataSource.filter = filterValue;
+  }
+
+  private _filter(value: string): Product[] {
+    const filterValue = value.toLowerCase();
+    return this.products.filter(option =>
+      option.codigo.toLowerCase().includes(filterValue) ||
+      option.descricao.toLowerCase().includes(filterValue) ||
+      option.department.descricao.toLowerCase().includes(filterValue)
+    );
+  }
+
+  onAutocompleteSelection(event: any): void {
+    const selectedValue = event.option.value;
+    this.searchControl.setValue(selectedValue);
+    this.applyFilter({ target: { value: selectedValue } } as unknown as Event);
   }
 }
