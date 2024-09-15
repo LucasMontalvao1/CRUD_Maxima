@@ -4,7 +4,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProductService } from '../../../services/product.service';
 import { DepartmentService } from '../../../services/department.service';
 import { Department } from '../../../models/department.model';
-import { Product } from '../../../models/product.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -27,18 +26,35 @@ export class ProductDialogComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.isEditMode = !!this.data?.product;
-
+    // Inicialize o form com os campos e validadores
     this.productForm = this.fb.group({
-      codigo: [this.data?.product?.codigo || '', Validators.required],
-      descricao: [this.data?.product?.descricao || '', Validators.required],
-      preco: [this.data?.product?.preco || '', [Validators.required, this.precoValidator]],
-      status: [this.data?.product?.status || true],
-      codigodepartamento: [this.data?.product?.codigodepartamento || '', Validators.required],
+      codigo: ['', Validators.required],
+      descricao: ['', Validators.required],
+      preco: ['', [Validators.required, this.precoValidator]],
+      status: [true],
+      codigodepartamento: ['', Validators.required]
     });
 
-    console.log('Dados do produto no diálogo:', this.data?.product); // Log para verificar os dados
+    // Carregar os departamentos
     this.loadDepartments();
+
+    // Verificar se estamos no modo de edição
+    if (this.data?.product?.id) {
+      this.isEditMode = true;
+      this.productService.getProductById(this.data.product.id).subscribe(product => {
+        this.productForm.patchValue({
+          codigo: product.codigo,
+          descricao: product.descricao,
+          preco: product.preco,
+          status: product.status,
+          codigodepartamento: product.department?.codigo || product.department.codigo
+        });
+        console.log('Produto carregado para edição:', product);
+      }, error => {
+        console.error('Erro ao carregar produto:', error);
+        this.snackBar.open('Erro ao carregar produto.', 'Fechar', { duration: 3000 });
+      });
+    }
   }
 
   precoValidator(control: FormControl): { [key: string]: boolean } | null {
@@ -49,10 +65,14 @@ export class ProductDialogComponent implements OnInit {
   }
 
   loadDepartments(): void {
-    this.departmentService.getDepartments().subscribe((departments) => {
-      console.log('Departamentos carregados:', departments); // Log para verificar os departamentos
+    this.departmentService.getDepartments().subscribe(departments => {
       this.departments = departments;
-      this.setInitialDepartment(); // Define o departamento após o carregamento
+      console.log('Departamentos carregados:', departments);
+
+      // Se estivermos no modo de edição e os departamentos já foram carregados
+      if (this.isEditMode) {
+        this.setInitialDepartment();
+      }
     }, error => {
       this.snackBar.open('Erro ao carregar departamentos.', 'Fechar', { duration: 3000 });
       console.error(error);
@@ -61,19 +81,13 @@ export class ProductDialogComponent implements OnInit {
 
   setInitialDepartment(): void {
     const departmentCode = this.data?.product?.codigodepartamento;
-    console.log('Código do departamento a ser definido:', departmentCode);
-
     if (departmentCode) {
-      // Se a lista de departamentos não contiver o departamento, faça a chamada para obter um departamento específico
       const department = this.departments.find(d => d.codigo === departmentCode);
-
       if (department) {
-        // Departamento já está na lista, defina o valor do campo
         this.productForm.patchValue({
           codigodepartamento: department.codigo
         });
       } else {
-        // Se o departamento não estiver na lista, faça uma chamada separada para obter o departamento
         this.departmentService.getDepartmentByCode(departmentCode).subscribe(department => {
           this.productForm.patchValue({
             codigodepartamento: department.codigo
@@ -91,7 +105,11 @@ export class ProductDialogComponent implements OnInit {
       return;
     }
 
-    const productData = this.productForm.value;
+    const productData = {
+      ...this.productForm.value,
+      id: this.data?.product?.id // Passar o ID caso seja edição
+    };
+
     if (this.isEditMode) {
       this.productService.updateProduct(this.data.product.id, productData).subscribe(() => {
         this.snackBar.open('Produto atualizado com sucesso!', 'Fechar', { duration: 3000 });

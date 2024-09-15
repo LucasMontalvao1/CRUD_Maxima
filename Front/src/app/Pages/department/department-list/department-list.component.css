@@ -1,0 +1,53 @@
+.department-container {
+  position: relative;
+  margin: 16px;
+  padding-bottom: 56px; 
+  max-width: 80%; /* Define a largura máxima do contêiner como 80% da largura da página */
+  margin: 16px auto; /* Centraliza o contêiner horizontalmente */
+}
+
+.mat-card-header-title {
+  font-size: 25px; /* Ajusta o tamanho da fonte conforme necessário */
+  font-weight: bold; /* Adiciona negrito ao título */
+  margin: 0; /* Remove margens extras, se necessário */
+}
+
+.mat-card-header {
+  position: relative;
+  padding: 16px 24px; /* Adiciona mais espaçamento ao redor do título e do botão */
+  margin-bottom: 40px; /* Aumenta a margem inferior do título */
+  font-size: 36px; /* Aumenta o tamanho da fonte do título */
+  font-weight: bold; /* Adiciona negrito ao título */
+  padding-bottom: 24px; /* Adiciona mais espaçamento extra abaixo do título */
+  text-align: center; /* Centraliza o texto do título */
+}
+
+/* Ajusta o tamanho da tabela */
+mat-table {
+  width: 100%; /* Define a largura da tabela como 100% do contêiner pai */
+  table-layout: fixed; /* Define o layout da tabela como fixo para melhor controle das larguras das colunas */
+}
+
+/* Ajusta o tamanho das colunas e células da tabela */
+.mat-header-cell, .mat-cell {
+  text-align: center; /* Centraliza o texto nas células */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px; /* Adiciona padding uniforme nas células */
+}
+
+/* Ajusta o tamanho dos ícones se necessário */
+.mat-icon {
+  font-size: 24px; /* Ajusta o tamanho dos ícones */
+}
+
+/* Ajusta a largura das colunas da tabela */
+ng-container {
+  width: 100%; /* Faz as colunas da tabela ocuparem toda a largura disponível */
+}
+
+.no-department {
+  text-align: center;
+  margin-top: 32px; /* Aumenta a margem superior para separar melhor da tabela */
+}

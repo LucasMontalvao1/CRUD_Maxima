@@ -1,0 +1,77 @@
+/* Estilo para o contêiner principal do diálogo */
+.dialog-content-container {
+  display: flex;
+  flex-direction: column; /* Organiza os elementos em coluna */
+  align-items: center; /* Alinha todos os elementos ao centro horizontalmente */
+  justify-content: center; /* Centraliza o conteúdo verticalmente */
+  padding: 20px; /* Espaço interno ao redor do conteúdo */
+  max-width: 500px; /* Largura máxima do contêiner */
+  margin: auto; /* Centraliza o contêiner horizontalmente */
+}
+
+/* Estilo para o título do diálogo */
+.mat-dialog-title {
+  font-size: 1.5rem; /* Tamanho do texto */
+  font-weight: 500; /* Peso da fonte */
+  margin-bottom: 16px; /* Margem abaixo do título */
+  text-align: center; /* Centraliza o texto do título */
+}
+
+/* Estilo para o conteúdo do diálogo */
+.mat-dialog-content {
+  display: flex; /* Usa flexbox para alinhar o conteúdo */
+  justify-content: center; /* Centraliza o conteúdo horizontalmente */
+  align-items: center; /* Centraliza o conteúdo verticalmente */
+  padding: 0; /* Remove o padding padrão */
+  margin-bottom: 16px; /* Margem abaixo do conteúdo */
+}
+
+/* Estilo para as ações do diálogo (botões) */
+.mat-dialog-actions {
+  display: flex; /* Usa flexbox para alinhar os botões */
+  justify-content: center; /* Centraliza os botões horizontalmente */
+  padding: 0; /* Remove o padding padrão */
+}
+
+/* Container para as ações do diálogo */
+.dialog-actions-container {
+  display: flex; /* Organiza os botões em linha */
+  gap: 16px; /* Espaço entre os botões */
+}
+
+/* Adicionando cursor pointer aos botões */
+button {
+  cursor: pointer;
+}
+
+/* Estilização específica para o botão "Cancelar" */
+button.cancel-button {
+  border-radius: 20px; /* Borda arredondada */
+  font-size: 0.875rem; /* Tamanho do texto dos botões */
+  padding: 8px 16px; /* Espaço interno dos botões */
+  background-color: #2196f3; /* Cor de fundo azul */
+  color: #fff; /* Cor do texto */
+  border: none; /* Remove a borda padrão */
+  cursor: pointer; /* Muda o cursor para a mãozinha */
+}
+
+/* Estilização específica para o botão "Cancelar" quando hover */
+button.cancel-button:hover {
+  background-color: #1976d2; /* Cor de fundo mais escura no hover */
+}
+
+/* Estilização específica para o botão "Confirmar" */
+button.confirm-button {
+  border-radius: 20px; /* Borda arredondada */
+  font-size: 0.875rem; /* Tamanho do texto dos botões */
+  padding: 8px 16px; /* Espaço interno dos botões */
+  background-color: #f44336; /* Cor de fundo vermelha */
+  color: #fff; /* Cor do texto */
+  border: none; /* Remove a borda padrão */
+  cursor: pointer; /* Muda o cursor para a mãozinha */
+}
+
+/* Estilização específica para o botão "Confirmar" quando hover */
+button.confirm-button:hover {
+  background-color: #d32f2f; /* Cor de fundo mais escura no hover */
+}

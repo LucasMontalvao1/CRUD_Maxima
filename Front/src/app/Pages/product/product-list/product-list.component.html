@@ -44,7 +44,7 @@
         <button mat-icon-button class="edit-button" (click)="openProductDialog(element)" aria-label="Editar">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button class="delete-button" (click)="deleteProduct(element.id)" aria-label="Excluir">
+        <button mat-icon-button class="delete-button" (click)="openDeleteDialog(element.id)" aria-label="Excluir">
           <mat-icon>delete</mat-icon>
         </button>
       </mat-cell>
@@ -56,11 +56,13 @@
 
   </mat-table>
 
-  <!-- Paginador -->
-  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-
   <!-- Mensagem quando não houver produtos -->
   <div class="no-products" *ngIf="!dataSource.data.length">
     Nenhum produto encontrado
   </div>
+
+  <!-- Paginador -->
+  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+
 </mat-card>

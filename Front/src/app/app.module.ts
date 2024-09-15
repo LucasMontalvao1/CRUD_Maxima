@@ -29,7 +29,7 @@ import { FooterComponent } from './components/footer/footer.component';
 // Pages
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
-import { DepartamentListComponent } from './pages/department/departament-list/departament-list.component';
+import { DepartmentListComponent } from './pages/department/department-list/department-list.component';
 import { ProductListComponent } from './pages/product/product-list/product-list.component';
 import { ProductDialogComponent } from './pages/product/product-dialog/product-dialog.component';
 
@@ -41,10 +41,9 @@ import { ProductDialogComponent } from './pages/product/product-dialog/product-d
     FooterComponent,
     LoginComponent,
     HomeComponent,
-    DepartamentListComponent,
     ProductListComponent,
-    ProductDialogComponent
-
+    ProductDialogComponent,
+    DepartmentListComponent
   ],
   imports: [
     BrowserModule,

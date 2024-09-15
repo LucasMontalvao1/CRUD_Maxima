@@ -6,6 +6,8 @@ import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../models/product.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductDialogComponent } from '../product-dialog/product-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-product-list',
@@ -22,7 +24,8 @@ export class ProductListComponent implements OnInit, AfterViewInit {
 
   constructor(
     private productService: ProductService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -45,6 +48,9 @@ export class ProductListComponent implements OnInit, AfterViewInit {
     this.productService.getProducts().subscribe((data: Product[]) => {
       this.products = data;
       this.dataSource.data = this.products;
+    }, error => {
+      console.error('Erro ao carregar produtos:', error);
+      this.snackBar.open('Erro ao carregar produtos.', 'Fechar', { duration: 3000 });
     });
   }
 
@@ -61,10 +67,29 @@ export class ProductListComponent implements OnInit, AfterViewInit {
     });
   }
 
-  deleteProduct(productId: number): void {
-    this.productService.deleteProduct(productId).subscribe(() => {
-      this.loadProducts();
+  openDeleteDialog(productId: number): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '400px',
+      panelClass: 'confirm-dialog'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.deleteProduct(productId);
+      }
     });
   }
 
+  deleteProduct(productId: number): void {
+    this.productService.deleteProduct(productId).subscribe({
+      next: (message) => {
+        this.loadProducts();
+        this.snackBar.open(message, 'Fechar', { duration: 3000 });
+      },
+      error: (error) => {
+        this.snackBar.open('Erro ao deletar o produto.', 'Fechar', { duration: 3000 });
+        console.error('Erro ao deletar produto:', error);
+      }
+    });
+  }
 }

@@ -118,18 +118,18 @@ namespace API.Controllers
             if (productDto == null || id != productDto.Id)
             {
                 _logger.LogWarning("Dados de produto inválidos ou ID incorreto.");
-                return BadRequest("Dados de produto inválidos ou ID incorreto.");
+                return BadRequest(new { message = "Dados de produto inválidos ou ID incorreto." });
             }
 
             try
             {
                 await _productService.UpdateProductAsync(id, productDto);
-                return Ok("Produto atualizado com sucesso.");
+                return Ok(new { message = "Produto atualizado com sucesso." });
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Erro ao atualizar o produto com ID {id}.");
-                return StatusCode(500, $"Erro ao atualizar o produto: {ex.Message}");
+                return StatusCode(500, new { message = $"Erro ao atualizar o produto: {ex.Message}" });
             }
         }
 
