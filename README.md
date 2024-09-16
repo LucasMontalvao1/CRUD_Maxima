@@ -273,8 +273,4 @@ Se você tiver dúvidas ou precisar de mais assistência, sinta-se à vontade pa
 
 Atenciosamente,
 
-<<<<<<< HEAD
 **Lucas Montalvão**  
-=======
-**Lucas Montalvão**  
->>>>>>> abf9e3548118447d704955f4509b22d0fa2cc88d
