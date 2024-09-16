@@ -264,7 +264,11 @@ dotnet test
 ### Abaixo, você pode conferir um vídeo demonstrativo da aplicação em funcionamento:
 
 <a href="https://youtu.be/7k5aLhsTehQ">
+<<<<<<< HEAD
   <img src="https://img.youtube.com/vi/7k5aLhsTehQ/0.jpg" alt="Vídeo de Demonstração" />
+=======
+  <img src="https://youtu.be/7k5aLhsTehQ" alt="Vídeo de Demonstração" />
+>>>>>>> abf9e3548118447d704955f4509b22d0fa2cc88d
 </a>
 
 [Assista ao vídeo de demonstração](https://youtu.be/7k5aLhsTehQ)
@@ -275,4 +279,8 @@ Se você tiver dúvidas ou precisar de mais assistência, sinta-se à vontade pa
 
 Atenciosamente,
 
+<<<<<<< HEAD
 **Lucas Montalvão**  
+=======
+**Lucas Montalvão**  
+>>>>>>> abf9e3548118447d704955f4509b22d0fa2cc88d
