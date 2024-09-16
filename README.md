@@ -44,7 +44,7 @@ Quando o repositorio for clonado, as estrutura da pasta ficara assim:
 │   ├── insert_data.sql    # Script para inserção de dados
 │   └── triggers.sql       # Script para triggers
 └── README.md             # Instruções detalhadas
-
+```
 
 ## Configurando o Banco de Dados
 
