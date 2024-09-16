@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v8.0": {
-      "API/1.0.0": {
+      "api/1.0.0": {
         "dependencies": {
           "MySql.Data": "9.0.0",
           "Serilog": "4.0.1",
@@ -16,7 +16,7 @@
           "Swashbuckle.AspNetCore": "6.4.0"
         },
         "runtime": {
-          "API.dll": {}
+          "api.dll": {}
         }
       },
       "BouncyCastle.Cryptography/2.3.1": {
@@ -464,7 +464,7 @@
     }
   },
   "libraries": {
-    "API/1.0.0": {
+    "api/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

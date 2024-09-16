@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\dev\\CRUD_Maxima\\API\\API.csproj": {}
+    "C:\\dev\\CRUD_Maxima\\api\\api.csproj": {}
   },
   "projects": {
-    "C:\\dev\\CRUD_Maxima\\API\\API.csproj": {
+    "C:\\dev\\CRUD_Maxima\\api\\api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\dev\\CRUD_Maxima\\API\\API.csproj",
-        "projectName": "API",
-        "projectPath": "C:\\dev\\CRUD_Maxima\\API\\API.csproj",
+        "projectUniqueName": "C:\\dev\\CRUD_Maxima\\api\\api.csproj",
+        "projectName": "api",
+        "projectPath": "C:\\dev\\CRUD_Maxima\\api\\api.csproj",
         "packagesPath": "C:\\Users\\lucas.montalvao\\.nuget\\packages\\",
-        "outputPath": "C:\\dev\\CRUD_Maxima\\API\\obj\\",
+        "outputPath": "C:\\dev\\CRUD_Maxima\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lucas.montalvao\\AppData\\Roaming\\NuGet\\NuGet.Config",

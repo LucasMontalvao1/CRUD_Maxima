@@ -10,9 +10,9 @@ using API.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace API.Tests
+namespace API.Tests.Products
 {
-    public class ProductControllerGetTests
+    public class ProductControllerGetAllTests
     {
         // Mock para o serviço de produtos
         private readonly Mock<IProductService> _productServiceMock;
@@ -23,7 +23,7 @@ namespace API.Tests
         // Instância do controlador a ser testado
         private readonly ProductsController _controller;
 
-        public ProductControllerGetTests()
+        public ProductControllerGetAllTests()
         {
             // Inicializa os mocks
             _productServiceMock = new Mock<IProductService>();
@@ -106,11 +106,12 @@ namespace API.Tests
                 .ThrowsAsync(new Exception("Erro interno"));
 
             // Act: Executa o método a ser testado
-            var result = await _controller.GetAll() as StatusCodeResult;
+            var result = await _controller.GetAll();
 
             // Assert: Verifica se o resultado é o esperado
-            result.Should().NotBeNull(); // Verifica se o resultado não é nulo
-            result.StatusCode.Should().Be(500); // Verifica se o código de status HTTP é 500 Internal Server Error
+            var statusCodeResult = result as ObjectResult;
+            statusCodeResult.Should().NotBeNull(); // Verifica se o resultado não é nulo
+            statusCodeResult.StatusCode.Should().Be(500); // Verifica se o código de status HTTP é 500 Internal Server Error
         }
 
         [Fact]
