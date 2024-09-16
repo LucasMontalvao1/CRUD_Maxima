@@ -36,21 +36,22 @@ Quando o repositorio for clonado, as estrutura da pasta ficara assim:
 
 .
 ├── API/                 # API backend
-│   ├── Controllers/
-│   ├── Program.cs
-│   ├── appsettings.json
-│   └── ...
-├── API.Tests/                 # API TESTE
-│   ├── ProductControllerGetTests.cs
-│   └── ...
-├── front/                # Aplicação frontend Angular
-│   ├── src/
-│   └── ...
-├── database/                # Scripts de banco de dados
-│   ├── create_tables.sql
-│   ├── insert_data.sql
-│   └── triggers.sql
-└── README.md                # Instruções detalhadas
+│   ├── Controllers/     # Controllers da API
+│   ├── Program.cs       # Arquivo principal da aplicação
+│   ├── appsettings.json # Configurações da API
+│   └── ...              # Outros arquivos da API
+├── API.Tests/           # Testes da API
+│   ├── ProductControllerGetTests.cs # Testes específicos
+│   └── ...              # Outros arquivos de teste
+├── front/               # Aplicação frontend Angular
+│   ├── src/             # Código-fonte do Angular
+│   └── ...              # Outros arquivos do frontend
+├── database/            # Scripts de banco de dados
+│   ├── create_tables.sql  # Script para criação das tabelas
+│   ├── insert_data.sql    # Script para inserção de dados
+│   └── triggers.sql       # Script para triggers
+└── README.md            # Instruções detalhadas
+
 
 ## Configurando o Banco de Dados
 
@@ -62,7 +63,7 @@ Os scripts SQL utilizados para criar as tabelas e triggers estão localizados na
 
 - Crie um banco de dados chamado **`crud_maxima`**:
 
-```sql
+```
 CREATE DATABASE crud_maxima;
 ```
 
@@ -91,7 +92,7 @@ mysql -u root -p crud_maxima < ./database/triggers.sql
 
 ### 4. Verifique se as tabelas e triggers foram criadas corretamente executando as consultas apropriadas.
 
-    ```sql
+    ```
     -- Verificar tabelas
     SHOW TABLES;
 
