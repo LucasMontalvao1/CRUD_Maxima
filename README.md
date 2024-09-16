@@ -201,7 +201,6 @@ cd api/logs
 cat nome-do-arquivo.log
 ```
 
-![Descrição da Imagem](assets/PrintLogs.jpg)
 
 ### Trigger de Registro de Modificações de Produto
 
@@ -225,7 +224,6 @@ SHOW TRIGGERS;
 SELECT * FROM logproduct;
 ```
 
-![Descrição da Imagem](assets/PrintTrigger.jpg)
 
 ## Configurando e Rodando Testes da API
 
@@ -263,12 +261,8 @@ dotnet test
 
 ### Abaixo, você pode conferir um vídeo demonstrativo da aplicação em funcionamento:
 
-<a href="https://youtu.be/7k5aLhsTehQ">
-<<<<<<< HEAD
+<a href="https://youtu.be/7k5aLhsTehQ" target="_blank">
   <img src="https://img.youtube.com/vi/7k5aLhsTehQ/0.jpg" alt="Vídeo de Demonstração" />
-=======
-  <img src="https://youtu.be/7k5aLhsTehQ" alt="Vídeo de Demonstração" />
->>>>>>> abf9e3548118447d704955f4509b22d0fa2cc88d
 </a>
 
 [Assista ao vídeo de demonstração](https://youtu.be/7k5aLhsTehQ)
