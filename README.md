@@ -32,25 +32,18 @@ Clone o repositorio:
 git clone https://github.com/LucasMontalvao1/CRUD_Maxima.git
 ```
     
-Quando o repositorio for clonado, as estrutura da pasta ficara assim:
+Quando o repositorio for clonado, as estrutura da pasta ficara assim:  
 
+```plaintext
 .
-├── API/                 # API backend
-│   ├── Controllers/     # Controllers da API
-│   ├── Program.cs       # Arquivo principal da aplicação
-│   ├── appsettings.json # Configurações da API
-│   └── ...              # Outros arquivos da API
-├── API.Tests/           # Testes da API
-│   ├── ProductControllerGetTests.cs # Testes específicos
-│   └── ...              # Outros arquivos de teste
-├── front/               # Aplicação frontend Angular
-│   ├── src/             # Código-fonte do Angular
-│   └── ...              # Outros arquivos do frontend
+├── api/                 # Backend da API
+├── api.Tests/           # Testes da API
+├── front/               # Frontend Angular
 ├── database/            # Scripts de banco de dados
 │   ├── create_tables.sql  # Script para criação das tabelas
 │   ├── insert_data.sql    # Script para inserção de dados
 │   └── triggers.sql       # Script para triggers
-└── README.md            # Instruções detalhadas
+└── README.md             # Instruções detalhadas
 
 
 ## Configurando o Banco de Dados
