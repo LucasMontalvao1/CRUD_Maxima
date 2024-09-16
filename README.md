@@ -201,6 +201,8 @@ cd api/logs
 cat nome-do-arquivo.log
 ```
 
+![Descrição da Imagem](assets/PrintLogs.jpg)
+
 ### Trigger de Registro de Modificações de Produto
 
 - A trigger de banco de dados foi criada para registrar modificações nos produtos. Para visualizar e testar a trigger:
@@ -222,6 +224,8 @@ SHOW TRIGGERS;
 ```bash
 SELECT * FROM logproduct;
 ```
+
+![Descrição da Imagem](assets/PrintTrigger.jpg)
 
 ## Configurando e Rodando Testes da API
 
@@ -259,6 +263,7 @@ dotnet test
 
 ### Abaixo, você pode conferir um vídeo demonstrativo da aplicação em funcionamento:
 
+[Assista ao vídeo de demonstração](https://youtu.be/7k5aLhsTehQ)
 
 
 
